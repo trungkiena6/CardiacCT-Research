@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "reconciled_on": "2026-11-02",
+  "baseline_commit": "7d6c0e55c4ce8a524699d7b0ec1c266b23ae94ab",
+  "evidence_scope": "Arithmetic reconciliation of archived per-case CSV and saved JSON summaries",
+  "execution_provenance_verified": true,
+  "predictions_or_checkpoints_verified": true,
+  "restoration": "Original archived result files restored byte-for-byte from baseline_commit; pre-correction working files preserved in a local private backup.",
+  "aggregation": "Unweighted arithmetic mean of complete per-case populations. ImageCAS single uses all 1000 cases across the four disjoint test splits. Ensemble covers Split 1 only (250 cases).",
+  "confidence_intervals": "Saved 95% percentile bootstrap intervals over cases (10000 resamples, seed 0); upper bounds are distinct from means. No pooled confidence interval was stored for the four-split single model.",
+  "retained_upper_ci_percent": {
+    "ensemble_split1": 84.9,
+    "m1": 91.4,
+    "m1_postprocessing": 91.72
+  },
+  "single_model_variability": "between_split_sd_dice_percent is the sample SD of four split means, not a confidence interval or per-case SD.",
+  "manuscript_comparison": "paper_values.csv remains an audit against the frozen manuscript. Its mismatches are intentionally retained; use release_segmentation_summary.csv for corrected release means and intervals.",
+  "hd95_sources": "README uses the saved ImageCAS-X author evaluator for ImageCAS-X HD95. Local evaluator summaries are retained separately and are not substituted for author evaluator values.",
+  "summary_file": "results/release_segmentation_summary.csv",
+  "summary_sha256": "a0a79719d0ead1fc1f83bd97af3f7a8b50e38bca34f156a78e3e6f3e06f41fd7",
+  "source_sha256": {
+    "configs/imagecas_v2_split_manifest.csv": "e3948f680428ed36426fe292026db75ae69381a37bdd2945e48aad34c4441491",
+    "configs/imagecasx_filelists/test.txt": "451e8ba262a0e1b7f301b8855c52bc787b879375d1f3ed973c74c8851ebd6b05",
+    "results/imagecas-x/imagecasx_evaluate_py_results.json": "0241ac8293aa96d5b98c1846b6bba148253d5d85d8fd0df336f88b7c86b36e53",
+    "results/imagecas-x/imagecasx_evaluate_py_results_access2.json": "d0a5b7013389b76050d9679201cd19b380c047132018080af6666e12bcef6c4a",
+    "results/imagecas-x/lumen_access2_test_result.json": "38bc106d4c2e00a0b1a31bdf48e6ffa11a07adec5fb61f56d277785f0d290114",
+    "results/imagecas-x/lumen_access2_test_result.per_case.csv": "6bc8d323d04461ad23b1ef02e176e66ee9f387180c32d994bc82d5a2ce47e28b",
+    "results/imagecas-x/replication/rerun_m1_per_case.csv": "031a43acaad036ae0e6f99c66f2ffd752f0d6f62bbcc5055c400c2b5cf6e0966",
+    "results/imagecas-x/replication/rerun_m1_postprocess_per_case.csv": "104c3b345b5146e108fa1439897c04f366b76e949f26c0ccdf6aac6dfe8a1023",
+    "results/imagecas-x/replication/rerun_m1_postprocess_result.json": "6804694591aa3e946733886c977069c09936f6dd1e4f07a85e8062805f89a55e",
+    "results/imagecas-x/replication/rerun_m1_result.json": "b9a8898664de5cd3518d9fb161847370177be990d7e049f318b1576ff8cd6e0b",
+    "results/imagecas-x/xbench_ours_per_case.csv": "6e4e780f5ebacb893f9e703a97818bb8cf55d5ecfc83a6c01e57820b16e0f603",
+    "results/imagecas-x/xbench_ours_result.json": "5187c8e2aa4c41df4935e1d38d29acd7d94becefe06cfd2f92e71e28198446e6",
+    "results/imagecas/foursplit_summary.json": "308daf18c9a8eda269dc8a1bbca234c6b152c95446b848200ebee8c2cbde1e11",
+    "results/imagecas/replication/rerun_split1_resencl_single_per_case.csv": "1e0627d5d7c55b3ed8588361c2e4d55482f75c14fbacb0751a2ed615a1064650",
+    "results/imagecas/replication/rerun_split1_resencl_single_result.json": "1d3c842734a340a27e73bc79686404761151a53612fab96f688c40a9e5fa800c",
+    "results/imagecas/replication/rerun_split2_resencl_single_per_case.csv": "ce895a16c70115ad9cfdd82c1c9571db787a6d13a22c9425c9ebd9a1ffbb3709",
+    "results/imagecas/replication/rerun_split2_resencl_single_result.json": "fc7738c073bc3854f349f5e63c4c24cb4b048360a68bff1cf72ceef107a1d7fe",
+    "results/imagecas/replication/rerun_split3_resencl_single_per_case.csv": "19d1d5aa84f4d7f2b6f561b8c7aaa29dc60ba6c10e61814aa6db83a25fd521d2",
+    "results/imagecas/replication/rerun_split3_resencl_single_result.json": "22256e500196beb8029608ed9d677bab27def95dfc3b1cae6c2962ca1f53d40e",
+    "results/imagecas/replication/rerun_split4_resencl_single_per_case.csv": "dc349c03c47b9ea1c41c31b9d42e646c11098cf2f375de541ace0c1436c93f5c",
+    "results/imagecas/replication/rerun_split4_resencl_single_result.json": "54fb900cf4f34f55c77812abf2d1e7bbc69d29af94d9607a4de232e7913360c9",
+    "results/imagecas/replication/rerun_test_access_3_per_case.csv": "d11fd33dd662cbedfb50193876b5814c5196327874c1453e7ce30f6643d6346e",
+    "results/imagecas/replication/rerun_test_access_3_result.json": "bf71f6f3ff6620b3000f6d20f4339afb593653a444a7d576fb83d1d9a8d284d0",
+    "results/imagecas/split1_resencl_single_per_case.csv": "fe9067183fd05348da65fde7afd04bfc7b8a831eca7fe1358975cd9838db67ec",
+    "results/imagecas/split1_validation_experiments/pilot1000_decision.json": "4fd9f4675acfce4c759c2230de70091e50c56485431ccbf31041ee264eddd076",
+    "results/imagecas/split1_validation_experiments/pilot1000_val_per_case.csv": "27b7f4193aab25aefca232d5a4e1b09e47f5c01c5cdbb52c99896f1513f6302b",
+    "results/imagecas/split1_validation_experiments/postproc_choice.json": "46887178630920037f91f07f27621a4b17f3a61bbf622bd65a4f057c19d7ba6a",
+    "results/imagecas/split1_validation_experiments/postproc_val_sweep.json": "13f24b58bf97bfb15f35b4495ffacb311111a1b0179826052ff3349f5fd6dec2",
+    "results/imagecas/split1_validation_experiments/resencl_250ep_val_per_case.csv": "aabdbd57a98216c6f3b1f8f4b43e61ee701ce01e7868fd69f725ee30be1cb342",
+    "results/imagecas/split1_validation_experiments/skelrec_decision.json": "09405024b750e64918fc23a5ad6ab24392ac004ccb6292c1a26eaa224da15141",
+    "results/imagecas/split1_validation_experiments/skelrec_val_per_case.csv": "6714ae5a0e3564a233030b3e57bb79b017e9d343640c4c8f93f00c9babd3bc8a",
+    "results/imagecas/split2_resencl_single_per_case.csv": "63536d0d394f53e88b88929cb80ff5381bf0f41f72c68dcf3473f0760dea179d",
+    "results/imagecas/split3_resencl_single_per_case.csv": "00543126f847cf1d61ec9fae3f39bdab564ce65a9d0496a40e7dfaabfd8caed1",
+    "results/imagecas/split4_resencl_single_per_case.csv": "d8ebf52435a5aeac540b52646963106e4b1d664b3fadb876f8d3a20ed9e5c9fd",
+    "results/imagecas/test_access_3_per_case.csv": "2d7d3a402e94764efd9787f0ce1efe5580594f8024d6e339c026d4150f28e647",
+    "results/imagecas/test_access_3_result.json": "fe436b879b1d0cd9d4dd453a90cdd0ebef32034e9dd7acbd41885ac52e8353af",
+    "results/imagecas/test_access_6_choice.json": "2555b2682113721c7b9c1fa0bc31b3011bf4109b23889874de306a2d2ae1eecf",
+    "results/imagecas/test_access_6_per_case.csv": "50ef8de8d847ab8393d89f933db9b059a695492f63606e69b098ef0cda1c6a06",
+    "results/imagecas/test_access_6_result.json": "399e37605c5f993e8f7f93e5f3df6042dc666ac8e21238a85899823fe9b0ace6"
+  },
+  "verification_note": "2026-11: every archived segmentation output was re-executed from its checkpoint on RunPod (A100 80 GB, nnU-Net v2.8.1, PyTorch 2.8.0+cu128); the per-case Dice values reproduced to <= 5e-5 (largest 4.35e-5, ImageCAS-X M1 + post-processing). The archived checkpoints' SHA-256 values match configs/model_checkpoints.csv. See rerun_2026_11.",
+  "rerun_2026_11": {
+    "environment": "RunPod, NVIDIA A100 80GB PCIe (driver 595.91.07), nnU-Net v2.8.1, PyTorch 2.8.0+cu128, CUDA 12.8, repository commit 7d6c0e5",
+    "scripts": "scripts/rerun_2026_11",
+    "preregistrations": "configs/prereg_2026_11",
+    "replication": {
+      "imagecas/split1_resencl_single": {
+        "archived_per_case": "results/imagecas/split1_resencl_single_per_case.csv",
+        "rerun_per_case": "results/imagecas/replication/rerun_split1_resencl_single_per_case.csv",
+        "n": 250,
+        "archived_mean_dice": 0.839558,
+        "rerun_mean_dice": 0.839559,
+        "max_abs_per_case_dice_difference": 2.7e-05
+      },
+      "imagecas/split2_resencl_single": {
+        "archived_per_case": "results/imagecas/split2_resencl_single_per_case.csv",
+        "rerun_per_case": "results/imagecas/replication/rerun_split2_resencl_single_per_case.csv",
+        "n": 250,
+        "archived_mean_dice": 0.841295,
+        "rerun_mean_dice": 0.841295,
+        "max_abs_per_case_dice_difference": 0.0
+      },
+      "imagecas/split3_resencl_single": {
+        "archived_per_case": "results/imagecas/split3_resencl_single_per_case.csv",
+        "rerun_per_case": "results/imagecas/replication/rerun_split3_resencl_single_per_case.csv",
+        "n": 250,
+        "archived_mean_dice": 0.827113,
+        "rerun_mean_dice": 0.827113,
+        "max_abs_per_case_dice_difference": 2.73e-05
+      },
+      "imagecas/split4_resencl_single": {
+        "archived_per_case": "results/imagecas/split4_resencl_single_per_case.csv",
+        "rerun_per_case": "results/imagecas/replication/rerun_split4_resencl_single_per_case.csv",
+        "n": 250,
+        "archived_mean_dice": 0.832127,
+        "rerun_mean_dice": 0.832127,
+        "max_abs_per_case_dice_difference": 2.52e-05
+      },
+      "imagecas/test_access_3": {
+        "archived_per_case": "results/imagecas/test_access_3_per_case.csv",
+        "rerun_per_case": "results/imagecas/replication/rerun_test_access_3_per_case.csv",
+        "n": 250,
+        "archived_mean_dice": 0.843722,
+        "rerun_mean_dice": 0.843722,
+        "max_abs_per_case_dice_difference": 2.18e-05
+      },
+      "imagecas-x/m1": {
+        "archived_per_case": "results/imagecas-x/xbench_ours_per_case.csv",
+        "rerun_per_case": "results/imagecas-x/replication/rerun_m1_per_case.csv",
+        "n": 160,
+        "archived_mean_dice": 0.910075,
+        "rerun_mean_dice": 0.910073,
+        "max_abs_per_case_dice_difference": 3.64e-05
+      },
+      "imagecas-x/m1_postprocess": {
+        "archived_per_case": "results/imagecas-x/lumen_access2_test_result.per_case.csv",
+        "rerun_per_case": "results/imagecas-x/replication/rerun_m1_postprocess_per_case.csv",
+        "n": 160,
+        "archived_mean_dice": 0.913307,
+        "rerun_mean_dice": 0.913307,
+        "max_abs_per_case_dice_difference": 4.35e-05
+      }
+    },
+    "access6": {
+      "result": "results/imagecas/test_access_6_result.json",
+      "per_case": "results/imagecas/test_access_6_per_case.csv",
+      "choice": "results/imagecas/test_access_6_choice.json",
+      "preregistration": "configs/prereg_2026_11/PREREG_final_split1.txt",
+      "members": [
+        "pilot1000",
+        "resenc_l",
+        "resenc_l_ft",
+        "unet_ft500"
+      ],
+      "member_checkpoint_sha256": {
+        "pilot1000": "be713925bf9c6d40e14b0a2dd4cc68b4c99e0d61756f402cc7496e6b9e7acd2b",
+        "resenc_l": "913274bac386e3752a0deb129e77c0f24782b0645e9def8c0401fd645de891be",
+        "resenc_l_ft": "ec05e7f1933b536b1607cb50fc620c71e21f3354dbd021b617ec2abf378664da",
+        "unet_ft500": "6d6a3226088d10924960d36baf7283ee2495fce23b570062f8af47e53d1938d9"
+      },
+      "inference": "checkpoint_final, sliding-window step 0.25, no TTA, equal weights, mean foreground probability >= 0.5, no component filter",
+      "selection": "50 Split-1 validation cases only; 7 pre-specified candidates (all members, leave-one-out, archived trio); gate validation Dice >= 0.846",
+      "validation_dice": 0.846883,
+      "test": {
+        "n": 250,
+        "dice": 0.8464272492444908,
+        "cldice": 0.9001841765137613,
+        "hd95_mm": 7.893866585175061,
+        "betti0_err": 2.52,
+        "coverage_1mm": 0.917614174761904
+      },
+      "ci95": {
+        "dice": [
+          0.8408528439986511,
+          0.8518063317359911
+        ],
+        "cldice": [
+          0.8945882154527673,
+          0.9058279030399805
+        ],
+        "hd95_mm": [
+          7.031981605530554,
+          8.796289914149655
+        ],
+        "gt_centerline_coverage_1mm": [
+          0.9103394540863186,
+          0.9247101731986872
+        ]
+      },
+      "paired_vs_access3": {
+        "dice": {
+          "mean_diff_vs_access3": 0.0027050932446981697,
+          "ci95": [
+            0.0018394664176013677,
+            0.0035857490124107244
+          ]
+        },
+        "cldice": {
+          "mean_diff_vs_access3": 0.002055379005304525,
+          "ci95": [
+            0.0006018925956144582,
+            0.0035679492672649736
+          ]
+        },
+        "hd95_mm": {
+          "mean_diff_vs_access3": -0.4788053905978951,
+          "ci95": [
+            -0.833476412882077,
+            -0.17592131017889076
+          ]
+        },
+        "gt_centerline_coverage_1mm": {
+          "mean_diff_vs_access3": -0.0026607510992479907,
+          "ci95": [
+            -0.0043592418002291414,
+            -0.0009400091511767298
+          ]
+        }
+      },
+      "finished": "2026-11-07_03:01:01"
+    },
+    "discarded_validation_experiments": {
+      "postprocessing_A": {
+        "record": "results/imagecas/split1_validation_experiments/postproc_choice.json",
+        "sweep": "results/imagecas/split1_validation_experiments/postproc_val_sweep.json",
+        "outcome": "no configuration raised validation Dice above the three-member ensemble (0.8439); kept baseline, no test access"
+      },
+      "resencl_1000_epochs": {
+        "record": "results/imagecas/split1_validation_experiments/pilot1000_decision.json",
+        "outcome": "validation Dice 0.8371 vs 0.8390 for the 250-epoch model; NO-GO for Splits 2-4; the model entered the ensemble pool"
+      },
+      "skeleton_recall_loss": {
+        "record": "results/imagecas/split1_validation_experiments/skelrec_decision.json",
+        "outcome": "validation Dice 0.8367 (coverage +0.026, Betti-0 worse); discarded, no test access"
+      }
+    },
+    "split1_test_access_count": 6
+  }
+}

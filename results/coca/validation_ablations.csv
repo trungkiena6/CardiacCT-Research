@@ -1,0 +1,4 @@
+configuration,trainer,plans,n_validation,dice
+C2 heart crop with mirroring,nnUNetTrainer_250epochs,nnUNetPlans,43,0.5595373255742245
+C2 heart crop,nnUNetTrainer_250epochs_NoMirroring,nnUNetPlans,43,0.6098615026099732
+C4 heart crop with ResEnc-L,nnUNetTrainer_250epochs_NoMirroring,nnUNetResEncUNetL40GPlans,43,0.8274752938522298

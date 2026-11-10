@@ -1,0 +1,343 @@
+{
+  "audit_boundary": "Saved outputs and omitted-case source masks only; no new predictions, training, or inference.",
+  "inputs": {
+    "coronary-tree\\artifacts\\multid4cad\\multid4cad_eat_per_patient.csv": "a53f2fdc4259dff6078b98de41b305a8fac76f52820fcbbd17c19ab4fcc3f54c",
+    "coronary-tree\\artifacts\\imagecas-x\\pcat_lumen_160_per_vessel.csv": "702b2ee4af9283a586c3caa2676056008b571ae36671db71e131cf5a4074620e",
+    "coronary-tree\\artifacts\\imagecas-x\\pcat_expert_800_per_vessel.csv": "9c31e8a75655bb30d5f1da2c0e18c1853f99f110799cd1ed97bff90863d7cd28"
+  },
+  "eat": {
+    "cohort_n": 118,
+    "scored_n": 108,
+    "included_references_all_positive": true,
+    "omitted": [
+      "P019",
+      "P028",
+      "P075",
+      "P080",
+      "P083",
+      "P088",
+      "P089",
+      "P097",
+      "P108",
+      "P113"
+    ],
+    "mean_dice_rule_refrange": 0.7249888888888891,
+    "mean_dice_rule_refrange_fatwin": 0.7995305555555555,
+    "rule_bias_ml": -78.04627962962965,
+    "rule_difference_sd_ml": 63.87170249632477,
+    "rule_loa_ml": [
+      -203.2348165224262,
+      47.1422572631669
+    ],
+    "rule_volume_correlation": 0.9439169622216681,
+    "ba_difference_vs_mean_slope": -0.627394407491724,
+    "ba_intercept_ml": 54.28391087541344,
+    "rule_volume_correlation_ci95": [
+      0.9178893403526123,
+      0.9661288330880855
+    ],
+    "model_volume_correlation_ci95": [
+      0.5694354705036853,
+      0.8765565718355237
+    ],
+    "ratio_rule_to_reference_in_ref_range": {
+      "n": 108,
+      "mean": 0.7230404632862609,
+      "median": 0.7225145277132856,
+      "q25": 0.6562742865592186,
+      "q75": 0.777846996315799
+    },
+    "ratio_sums_in_ref_range": 0.6877441844518353,
+    "ratio_rule_to_reference_full_protocol": {
+      "n": 108,
+      "mean": 0.7422631447051474,
+      "median": 0.7325524483360045,
+      "q25": 0.6765023396055645,
+      "q75": 0.7971988722610565
+    },
+    "absolute_axial_extent_difference_mm": {
+      "n": 108,
+      "mean": 8.64861111111111,
+      "median": 7.5,
+      "q25": 4.3125,
+      "q75": 12.9375
+    },
+    "reference_above_rule_top_mm": {
+      "n": 108,
+      "mean": 7.6097222222222225,
+      "median": 4.125,
+      "q25": 0.0,
+      "q75": 12.9375
+    },
+    "interpretation": "The BA slope relates difference to pair mean and does not imply a constant volume ratio. Report ratios directly, with their domain."
+  },
+  "pcat": {
+    "auto_cohort_n": 160,
+    "expert_pool_n": 800,
+    "vessels": {
+      "RCA": {
+        "n_rows": 160,
+        "n_auto_valid": 158,
+        "n_paired": 158,
+        "availability": 0.9875,
+        "failures": {
+          "failed/segment_out_of_range": 2
+        },
+        "fai_icc21_ci95": [
+          0.955162116647162,
+          0.9780288013633943
+        ]
+      },
+      "LAD": {
+        "n_rows": 160,
+        "n_auto_valid": 154,
+        "n_paired": 154,
+        "availability": 0.9625,
+        "failures": {
+          "failed/vessel_not_named_or_too_short": 6
+        },
+        "fai_icc21_ci95": [
+          0.8677999368255602,
+          0.975081398772282
+        ]
+      },
+      "LCx": {
+        "n_rows": 160,
+        "n_auto_valid": 154,
+        "n_paired": 154,
+        "availability": 0.9625,
+        "failures": {
+          "failed/vessel_not_named_or_too_short": 6
+        },
+        "fai_icc21_ci95": [
+          0.9174528455710352,
+          0.969995312524034
+        ]
+      }
+    }
+  },
+  "new_saved_output_bootstrap": {
+    "n_resamples": 10000,
+    "seed": 0,
+    "method": "percentile 2.5 and 97.5; patient resampling, paired values retained together; RNG reinitialized for each endpoint",
+    "status": "Reproducible reaggregation of existing per-case outputs for submission revision; not a new prediction or a reconstruction of undocumented previous bootstrap runs."
+  },
+  "visuallab": {
+    "input": "D:\\imagecas-work\\visuallab\\work\\visuallab_default_per_patient.csv",
+    "sha256": "ecdf2ad41d085c67f0e14bc7514c0cad438c751d0c0c8b0e3cc346b260a35768",
+    "split": "last 10 of 20 patients in alphabetical order; default rule, not tuned variant",
+    "test_patients": [
+      "EGra",
+      "FGas",
+      "FPiq",
+      "ISou",
+      "JFul",
+      "JMir",
+      "MPai",
+      "MSil",
+      "TJes",
+      "VMar"
+    ],
+    "dice": {
+      "n": 10,
+      "mean": 0.6642899999999999,
+      "median": 0.6859,
+      "q25": 0.6522749999999999,
+      "q75": 0.7367
+    },
+    "dice_ci95": [
+      0.58960825,
+      0.7194299999999999
+    ],
+    "dice_ign_line": {
+      "n": 10,
+      "mean": 0.70494,
+      "median": 0.73535,
+      "q25": 0.698375,
+      "q75": 0.771625
+    },
+    "dice_ign_line_ci95": [
+      0.6301792500000001,
+      0.7559710000000001
+    ]
+  },
+  "saved_plans": [
+    {
+      "path": "D:\\imagecas-work\\multid4cad\\lumen_pred\\plans.json",
+      "sha256": "2c5e5aece6e095fc0b6dce28ae5cd23ba09967a4e2225562928f1a1080f4b262",
+      "dataset_name": "Dataset906_ImageCASX_lumen",
+      "plans_name": "nnUNetResEncUNetL40GPlans",
+      "image_reader_writer": "SimpleITKIO",
+      "transpose_forward": [
+        0,
+        1,
+        2
+      ],
+      "configuration": {
+        "spacing": [
+          0.5,
+          0.349609375,
+          0.349609375
+        ],
+        "patch_size": [
+          160,
+          320,
+          256
+        ],
+        "resampling_fn_data": "resample_data_or_seg_to_shape",
+        "resampling_fn_data_kwargs": {
+          "is_seg": false,
+          "order": 3,
+          "order_z": 0,
+          "force_separate_z": null
+        },
+        "resampling_fn_seg": "resample_data_or_seg_to_shape",
+        "resampling_fn_seg_kwargs": {
+          "is_seg": true,
+          "order": 1,
+          "order_z": 0,
+          "force_separate_z": null
+        },
+        "resampling_fn_probabilities": "resample_data_or_seg_to_shape",
+        "resampling_fn_probabilities_kwargs": {
+          "is_seg": false,
+          "order": 1,
+          "order_z": 0,
+          "force_separate_z": null
+        },
+        "normalization_schemes": [
+          "CTNormalization"
+        ]
+      },
+      "intensity_properties": {
+        "0": {
+          "max": 1583.0,
+          "mean": 356.4438171386719,
+          "median": 348.0,
+          "min": -140.0,
+          "percentile_00_5": 61.0,
+          "percentile_99_5": 814.0,
+          "std": 150.2842559814453
+        }
+      }
+    },
+    {
+      "path": "D:\\imagecas-work\\imagecas-x\\pod_backup\\xwork\\nnunet_results\\Dataset906_ImageCASX_lumen\\nnUNetTrainer_250epochs_NoMirroring__nnUNetResEncUNetL40GPlans__3d_fullres\\plans.json",
+      "sha256": "d35e49044ebf9cd23461d2f6d837a8b5e7c1d6f6f1312f7f1eb0fc45d154fa3b",
+      "dataset_name": "Dataset906_ImageCASX_lumen",
+      "plans_name": "nnUNetResEncUNetL40GPlans",
+      "image_reader_writer": "SimpleITKIO",
+      "transpose_forward": [
+        0,
+        1,
+        2
+      ],
+      "configuration": {
+        "spacing": [
+          0.5,
+          0.349609375,
+          0.349609375
+        ],
+        "patch_size": [
+          160,
+          320,
+          256
+        ],
+        "resampling_fn_data": "resample_data_or_seg_to_shape",
+        "resampling_fn_data_kwargs": {
+          "is_seg": false,
+          "order": 3,
+          "order_z": 0,
+          "force_separate_z": null
+        },
+        "resampling_fn_seg": "resample_data_or_seg_to_shape",
+        "resampling_fn_seg_kwargs": {
+          "is_seg": true,
+          "order": 1,
+          "order_z": 0,
+          "force_separate_z": null
+        },
+        "resampling_fn_probabilities": "resample_data_or_seg_to_shape",
+        "resampling_fn_probabilities_kwargs": {
+          "is_seg": false,
+          "order": 1,
+          "order_z": 0,
+          "force_separate_z": null
+        },
+        "normalization_schemes": [
+          "CTNormalization"
+        ]
+      },
+      "intensity_properties": {
+        "0": {
+          "max": 1583.0,
+          "mean": 356.4438171386719,
+          "median": 348.0,
+          "min": -140.0,
+          "percentile_00_5": 61.0,
+          "percentile_99_5": 814.0,
+          "std": 150.2842559814453
+        }
+      }
+    },
+    {
+      "path": "D:\\imagecas-work\\nnunet_preprocessed\\Dataset901_ImageCAS_S1\\nnUNetPlans.json",
+      "sha256": "defdf01bc1302614291c887d1c6d2a1bc65ce239ba8bf158bbb8e6c13777c5ec",
+      "dataset_name": "Dataset901_ImageCAS_S1",
+      "plans_name": "nnUNetPlans",
+      "image_reader_writer": "SimpleITKIO",
+      "transpose_forward": [
+        0,
+        1,
+        2
+      ],
+      "configuration": {
+        "spacing": [
+          0.5,
+          0.349609375,
+          0.349609375
+        ],
+        "patch_size": [
+          96,
+          160,
+          160
+        ],
+        "resampling_fn_data": "resample_data_or_seg_to_shape",
+        "resampling_fn_data_kwargs": {
+          "is_seg": false,
+          "order": 3,
+          "order_z": 0,
+          "force_separate_z": null
+        },
+        "resampling_fn_seg": "resample_data_or_seg_to_shape",
+        "resampling_fn_seg_kwargs": {
+          "is_seg": true,
+          "order": 1,
+          "order_z": 0,
+          "force_separate_z": null
+        },
+        "resampling_fn_probabilities": "resample_data_or_seg_to_shape",
+        "resampling_fn_probabilities_kwargs": {
+          "is_seg": false,
+          "order": 1,
+          "order_z": 0,
+          "force_separate_z": null
+        },
+        "normalization_schemes": [
+          "CTNormalization"
+        ]
+      },
+      "intensity_properties": {
+        "0": {
+          "max": 3069.0,
+          "mean": 148.3529815673828,
+          "median": 110.0,
+          "min": -987.0,
+          "percentile_00_5": -163.0,
+          "percentile_99_5": 738.0,
+          "std": 179.9503936767578
+        }
+      }
+    }
+  ]
+}

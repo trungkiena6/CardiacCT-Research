@@ -1,0 +1,64 @@
+# Pre-registration — post-processing "A" of the Split-1 ensemble, chosen on validation only
+
+Written 03/11/2026 08:40 (local), before any sweep was run. Pod copy: `/workspace/rerun/PREREG_postproc_A.md`.
+
+## Question
+
+Can a cheap post-processing of the existing three-member ensemble probability map (lower / hysteresis
+threshold, anatomical gate from the heart mask, small-component removal) raise the validation Dice of the
+Split-1 configuration recorded in `test_access_3_choice.json`? Motivation: on the Split-1 test set the
+ensemble under-segments (FN 17 % of GT volume vs FP 13 %), misses 8 % of the GT centerline, and produces
+5.0 components per case vs 2.2 in the labels. These observations come from the already-reported access-3
+per-case file; no new test information is used.
+
+## Data
+
+- Validation cases only: ImageCAS Split-1 val, `Case0701`–`Case0750` (50 cases), images `W/val_s1`, labels
+  `W/val_labels_s1` on the pod (`W = /workspace/coroseg-work`). The test set (`Case0751`–`Case1000`) is not read.
+- Member probability maps: `unet_ft500`, `resenc_l`, `resenc_l_ft`, `checkpoint_final.pth`, sliding-window step
+  0.25, no TTA, equal weights — exactly the configuration of `test_access_3_choice.json`. Produced by
+  `imagecas_ensemble_access3.predict` into `W/testaccess3/val/<member>__checkpoint_final__s0.25/`.
+- Anatomical masks: TotalSegmentator v2 "total" (fast, 3 mm) multilabel outputs generated earlier for the
+  ImageCAS-X project (`D:\imagecas-work\imagecas-x\totalseg\<id>.nii.gz`), resampled nearest-neighbour to the
+  image grid; heart = class 51, aorta = class 52 (`postproc_a/heart_masks/Case07xx.nii.gz`, 1 = heart, 2 = aorta).
+  TotalSegmentator is an external tool; its masks are not trained on ImageCAS labels.
+
+## Baseline
+
+Threshold 0.5, no gate, T = 0 mm³: recorded val Dice 0.8439 (`trail.c_step_0.25` in the choice file). The
+baseline is re-scored on this pod in the same run; if it differs from 0.8439 by more than 0.001 the sweep stops
+and the discrepancy is investigated first.
+
+## Grid (fixed, 27 configurations, T = 0)
+
+- Binarisation (9): plain threshold t ∈ {0.30, 0.35, 0.40, 0.45, 0.50}; hysteresis with t_high = 0.50 and
+  t_low ∈ {0.25, 0.30, 0.35, 0.40} (keep every voxel ≥ t_low that is 26-connected to a voxel ≥ t_high).
+- Anatomical gate (3): none; keep a 26-connected component only if ≥ 50 % of its voxels lie within the heart
+  mask dilated by 10 mm (Euclidean distance on the image grid); the same with 20 mm.
+- Then, for the selected configuration only: component removal T ∈ {10, 25} mm³ (26-connectivity). Accept the
+  smallest T whose Dice loss vs T = 0 is ≤ 0.0005 and whose Betti-0 error is lower; otherwise keep T = 0.
+
+## Selection and decision rules
+
+1. Score every configuration with the repository evaluator (`score_segmentation.py` → Dice, clDice, HD95,
+   Betti-0 error, centerline coverage) on the 50 validation cases.
+2. Winner = highest mean Dice. Configurations within 0.0005 of the maximum are tied; among ties take the one
+   with the fewest changes from the baseline (plain before hysteresis, no gate before gate, t closest to 0.50,
+   10 mm before 20 mm).
+3. Adopt the winner only if ΔDice ≥ +0.0015 and ΔclDice ≥ −0.005 vs the baseline (both mean over val-50).
+   Otherwise the baseline is kept and nothing changes.
+4. Report the paired bootstrap 95 % CI of the per-case ΔDice (10 000 resamples, seed 0) for the winner, as
+   information, not as a gate.
+
+## Test access
+
+None in this step. An adopted post-processing becomes part of the final Split-1 configuration, which will
+touch the test set once more (sixth access, separately pre-registered) together with any training change that
+passes its own validation rule. If no later change is adopted, the post-processing alone may be tested in that
+single access; the test result is reported whatever its sign.
+
+## Outputs
+
+`/workspace/postproc_a.log` (markers A PRED-DONE, A BASE-OK, A SWEEP-DONE, A CHOICE, A LOI), 
+`W/postproc_a/val_sweep.json` (all 27 + T results, per-case CSVs kept), `W/postproc_a/choice.json`.
+Everything is copied to `D:\imagecas-work\rebuild\postproc_a\` and logged in `REBUILD_PLAN.md`.

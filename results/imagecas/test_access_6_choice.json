@@ -1,0 +1,125 @@
+{
+ "prereg": "PREREG_final_split1.md",
+ "pool": [
+  "unet_ft500",
+  "resenc_l",
+  "resenc_l_ft",
+  "pilot1000"
+ ],
+ "excluded": {
+  "expB": "B verdict: DISCARD (dice < 0)",
+  "resenc_l_s2": "no checkpoint_final.pth",
+  "resenc_l_s3": "no checkpoint_final.pth"
+ },
+ "single": {
+  "unet_ft500": {
+   "n": 50,
+   "dice": 0.830256,
+   "cldice": 0.886058,
+   "hd95_mm": 10.208619,
+   "betti0_err": 6.78,
+   "coverage_1mm": 0.938333
+  },
+  "resenc_l": {
+   "n": 50,
+   "dice": 0.840924,
+   "cldice": 0.899195,
+   "hd95_mm": 6.951818,
+   "betti0_err": 2.38,
+   "coverage_1mm": 0.917893
+  },
+  "resenc_l_ft": {
+   "n": 50,
+   "dice": 0.840431,
+   "cldice": 0.898509,
+   "hd95_mm": 7.160139,
+   "betti0_err": 2.48,
+   "coverage_1mm": 0.91142
+  },
+  "pilot1000": {
+   "n": 50,
+   "dice": 0.838719,
+   "cldice": 0.894063,
+   "hd95_mm": 8.088623,
+   "betti0_err": 2.82,
+   "coverage_1mm": 0.912131
+  },
+  "expB": {
+   "n": 50,
+   "dice": 0.838882,
+   "cldice": 0.895122,
+   "hd95_mm": 8.033161,
+   "betti0_err": 4.02,
+   "coverage_1mm": 0.944989
+  }
+ },
+ "candidates": {
+  "pilot1000+resenc_l+resenc_l_ft": {
+   "n": 50,
+   "dice": 0.846075,
+   "cldice": 0.903717,
+   "hd95_mm": 6.424846,
+   "betti0_err": 1.92,
+   "coverage_1mm": 0.918793
+  },
+  "pilot1000+resenc_l+resenc_l_ft+unet_ft500": {
+   "n": 50,
+   "dice": 0.846883,
+   "cldice": 0.904986,
+   "hd95_mm": 6.983199,
+   "betti0_err": 2.08,
+   "coverage_1mm": 0.921825
+  },
+  "pilot1000+resenc_l+unet_ft500": {
+   "n": 50,
+   "dice": 0.845942,
+   "cldice": 0.903932,
+   "hd95_mm": 7.487125,
+   "betti0_err": 2.68,
+   "coverage_1mm": 0.92812
+  },
+  "pilot1000+resenc_l_ft+unet_ft500": {
+   "n": 50,
+   "dice": 0.846341,
+   "cldice": 0.904294,
+   "hd95_mm": 7.131821,
+   "betti0_err": 2.6,
+   "coverage_1mm": 0.924154
+  },
+  "resenc_l+resenc_l_ft+unet_ft500": {
+   "n": 50,
+   "dice": 0.843901,
+   "cldice": 0.901602,
+   "hd95_mm": 6.851076,
+   "betti0_err": 2.36,
+   "coverage_1mm": 0.923585
+  }
+ },
+ "chosen": "pilot1000+resenc_l+resenc_l_ft+unet_ft500",
+ "members": [
+  "pilot1000",
+  "resenc_l",
+  "resenc_l_ft",
+  "unet_ft500"
+ ],
+ "val": {
+  "n": 50,
+  "dice": 0.846883,
+  "cldice": 0.904986,
+  "hd95_mm": 6.983199,
+  "betti0_err": 2.08,
+  "coverage_1mm": 0.921825
+ },
+ "tied_within": 0.0005,
+ "tied": [
+  "pilot1000+resenc_l+resenc_l_ft+unet_ft500"
+ ],
+ "gate_rule": "val dice >= 0.846",
+ "gate": "PASS",
+ "step": 0.25,
+ "weights": "equal",
+ "threshold": 0.5,
+ "T_mm3": 0,
+ "test_access": "none in this stage",
+ "written": "2026-11-06_21:03:42"
+}

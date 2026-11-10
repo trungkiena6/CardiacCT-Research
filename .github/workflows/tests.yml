@@ -1,0 +1,34 @@
+name: tests
+
+on: [push, pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  core:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -e ".[dev]"
+      - run: python -m ruff check src scripts tests
+      - run: python -m ruff format --check src scripts tests
+      - name: Check Bash formatting
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          curl -fsSL https://github.com/mvdan/sh/releases/download/v3.14.1/shfmt_v3.14.1_linux_amd64 -o "$RUNNER_TEMP/shfmt"
+          printf '%s  %s\n' '76e77641faa025814b77f153b29796b8e6fa2fca03e0c76a691608b86c7ea7bf' "$RUNNER_TEMP/shfmt" | sha256sum --check
+          chmod +x "$RUNNER_TEMP/shfmt"
+          "$RUNNER_TEMP/shfmt" -ln bash -i 2 -ci -sr -d scripts
+      - run: python -m pytest tests -q
+      - run: python scripts/validate_segmentation_exports.py --source-set archived
+      - run: python scripts/audit_dice_evidence.py --source-set archived

@@ -1,0 +1,190 @@
+{
+  "boundary": "Reaggregation of completed saved outputs; no new training, inference or image scoring.",
+  "contrast": "original ImageCAS whole-vessel expert mask minus ImageCAS-X lumen expert mask",
+  "interpretation": "Paired mask-source contrast, retaining both label-convention and annotation differences; not an isolated convention effect or a comparison of segmentation models.",
+  "held_fixed": "Same 800 CT scans, expert labelled centrelines, segment definitions, LPS-to-RAS conversion, heart/aorta frame and pcat_case routine.",
+  "source_comparison": "pcat_expert_wholevessel.py differs from pcat_expert_reference.py only in its docstring, tree source string and segmentation input path. Coordinate transforms and centreline assembly are unchanged. Local EDT radii and coronary-exclusion masks vary with the expert mask.",
+  "endpoint_definition": "fai_hu is the raw, uncorrected mean HU of fat-window voxels selected by the same implemented PCAT routine; it is not a calibrated clinical FAI score.",
+  "reference_scope": "Expert coronary masks and centrelines are inputs to the same routine; no independently manually contoured PCAT ground truth is available in this control. All non-missing paired measurements are retained, including needs_review statuses.",
+  "threshold_analysis": {
+    "threshold_hu": -70.1,
+    "positive_definition": "raw mean attenuation >= threshold; equality retained in upper group",
+    "crossing_direction": "lumen-mask measurement to whole-vessel-mask measurement",
+    "intent": "exploratory descriptive numerical sensitivity only",
+    "clinical_scope": "No validation of an artery-independent clinical cutoff, inflammation diagnosis, or risk reclassification; no technical, anatomical or biological calibration applied."
+  },
+  "remaining_limitations": "Mask-source contrast retains annotation differences as well as label-convention differences. This original comparison does not itself test shell sensitivity; the separate shell_sensitivity_800 analysis evaluates three definitions. Independent pericoronary tissue validation remains untested.",
+  "inputs": {
+    "coronary-tree\\artifacts\\imagecas-x\\pcat_expert_800_per_vessel.csv": "9c31e8a75655bb30d5f1da2c0e18c1853f99f110799cd1ed97bff90863d7cd28",
+    "coronary-tree\\artifacts\\imagecas-x\\pcat_expert_wholevessel_800_per_vessel.csv": "ac5477573d918c0b4e5d0abe3c600ab9b5db031937e91e61c4279d70474dd584",
+    "coronary-tree\\scripts\\pcat_expert_reference.py": "49a8944fe429233d3fcd9cce32a661658e98a2196a9e930e3e17e51a67306bdd",
+    "coronary-tree\\scripts\\pcat_expert_wholevessel.py": "f2f68431855bf4bd8c20931d46b39473b6b17eee30b357ecc33536e2058475c6"
+  },
+  "bootstrap": {
+    "n_resamples": 10000,
+    "seed": 0,
+    "unit": "patient within each artery",
+    "method": "percentile 2.5/97.5; paired rows retained together; RNG reset per endpoint",
+    "multiplicity_adjustment": "none; descriptive"
+  },
+  "vessels": {
+    "RCA": {
+      "n_paired": 800,
+      "n_lumen_rows": 800,
+      "n_whole_rows": 800,
+      "statuses_lumen": {
+        "ok": 798,
+        "needs_review": 2
+      },
+      "statuses_whole": {
+        "ok": 798,
+        "needs_review": 2
+      },
+      "fai_lumen_mean_hu": -78.4789942407608,
+      "fai_whole_mean_hu": -81.52322343349456,
+      "fai_difference_mean_hu": -3.0442291927337646,
+      "fai_difference_sd_hu": 2.472829352654719,
+      "fai_difference_mean_ci95_hu": [
+        -3.2161924229860306,
+        -2.871215158820152
+      ],
+      "fai_loa95_hu": [
+        -7.890974723937014,
+        1.8025163384694851
+      ],
+      "fai_icc21": 0.8690674970909412,
+      "fai_icc21_ci95": [
+        0.8524744417848689,
+        0.8836208412686889
+      ],
+      "fai_abs_difference_gt5_fraction": 0.20125,
+      "threshold_counts": {
+        "n_paired": 800,
+        "lumen_upper": 112,
+        "whole_upper": 42,
+        "upper_to_lower": 70,
+        "lower_to_upper": 0,
+        "any_crossing": 70
+      },
+      "pcat_volume_lumen_mean_ml": 1.2547971476984023,
+      "pcat_volume_whole_mean_ml": 3.3270525368809696,
+      "pcat_volume_difference_mean_ml": 2.0722553891825672,
+      "pcat_volume_icc21": 0.20520180796023646,
+      "pcat_volume_icc21_ci95": [
+        0.18734409512240224,
+        0.222792174292981
+      ],
+      "pcat_volume_mean_patient_ratio": 2.8603972095090957,
+      "local_radius_lumen_mean_mm": 1.2563978654450951,
+      "local_radius_whole_mean_mm": 2.0461543645196687,
+      "centreline_extent_max_abs_difference_mm": {
+        "trunk_len_mm": 0.0,
+        "achieved_mm": 0.0
+      }
+    },
+    "LAD": {
+      "n_paired": 800,
+      "n_lumen_rows": 800,
+      "n_whole_rows": 800,
+      "statuses_lumen": {
+        "ok": 800
+      },
+      "statuses_whole": {
+        "ok": 800
+      },
+      "fai_lumen_mean_hu": -77.20959639072419,
+      "fai_whole_mean_hu": -81.45450601100922,
+      "fai_difference_mean_hu": -4.244909620285034,
+      "fai_difference_sd_hu": 2.5272584835897676,
+      "fai_difference_mean_ci95_hu": [
+        -4.423082643151283,
+        -4.070108669996261
+      ],
+      "fai_loa95_hu": [
+        -9.198336248120977,
+        0.7085170075509106
+      ],
+      "fai_icc21": 0.795972758932984,
+      "fai_icc21_ci95": [
+        0.7721886957219655,
+        0.8175063317070494
+      ],
+      "fai_abs_difference_gt5_fraction": 0.345,
+      "threshold_counts": {
+        "n_paired": 800,
+        "lumen_upper": 128,
+        "whole_upper": 35,
+        "upper_to_lower": 93,
+        "lower_to_upper": 0,
+        "any_crossing": 93
+      },
+      "pcat_volume_lumen_mean_ml": 0.9705922643089293,
+      "pcat_volume_whole_mean_ml": 2.584123759174347,
+      "pcat_volume_difference_mean_ml": 1.6135314948654176,
+      "pcat_volume_icc21": 0.2019358216305103,
+      "pcat_volume_icc21_ci95": [
+        0.18123975679759866,
+        0.22259208969254674
+      ],
+      "pcat_volume_mean_patient_ratio": 2.975429380916184,
+      "local_radius_lumen_mean_mm": 1.1193691130319408,
+      "local_radius_whole_mean_mm": 1.8569151909512467,
+      "centreline_extent_max_abs_difference_mm": {
+        "trunk_len_mm": 0.0,
+        "achieved_mm": 0.0
+      }
+    },
+    "LCx": {
+      "n_paired": 800,
+      "n_lumen_rows": 800,
+      "n_whole_rows": 800,
+      "statuses_lumen": {
+        "ok": 800
+      },
+      "statuses_whole": {
+        "ok": 800
+      },
+      "fai_lumen_mean_hu": -76.03091917514801,
+      "fai_whole_mean_hu": -79.80727720737457,
+      "fai_difference_mean_hu": -3.7763580322265624,
+      "fai_difference_sd_hu": 2.556470791672591,
+      "fai_difference_mean_ci95_hu": [
+        -3.953092871427536,
+        -3.6008304948806766
+      ],
+      "fai_loa95_hu": [
+        -8.78704078390484,
+        1.2343247194517164
+      ],
+      "fai_icc21": 0.8261486778214977,
+      "fai_icc21_ci95": [
+        0.804720651720517,
+        0.8449646806438881
+      ],
+      "fai_abs_difference_gt5_fraction": 0.2925,
+      "threshold_counts": {
+        "n_paired": 800,
+        "lumen_upper": 159,
+        "whole_upper": 67,
+        "upper_to_lower": 95,
+        "lower_to_upper": 3,
+        "any_crossing": 98
+      },
+      "pcat_volume_lumen_mean_ml": 0.6847853728008269,
+      "pcat_volume_whole_mean_ml": 1.7889337795114517,
+      "pcat_volume_difference_mean_ml": 1.1041484067106249,
+      "pcat_volume_icc21": 0.24071091259427824,
+      "pcat_volume_icc21_ci95": [
+        0.21677302966881082,
+        0.2640491776392815
+      ],
+      "pcat_volume_mean_patient_ratio": 2.815575864684563,
+      "local_radius_lumen_mean_mm": 1.0064409819595161,
+      "local_radius_whole_mean_mm": 1.7050533923959625,
+      "centreline_extent_max_abs_difference_mm": {
+        "trunk_len_mm": 0.0,
+        "achieved_mm": 0.0
+      }
+    }
+  }
+}

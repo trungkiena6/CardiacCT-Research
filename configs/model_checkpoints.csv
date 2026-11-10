@@ -1,0 +1,13 @@
+model,trained_on,used_for,bytes,sha256
+Lumen ResEnc-L (M1),ImageCAS-X 560/80,"ImageCAS-X benchmark, lumen trees, PCAT, MultiD4CAD",1132337063,b3fb7f7fc7b31211a6377a1eba9a7a661e69d7a444efcac477a2b37a46a5c4e7
+Lumen U-Net (M3),ImageCAS-X 560/80,validation ensemble candidate in Table VI,246489679,b33600cffdbe189458a8d344b7f58c76148ff18a743ae07c7e571549f6497556
+"Whole-vessel ResEnc-L, Split 1","ImageCAS Split 1, 700/50","four-split result, ensemble member, out-of-sample trees",1132337255,913274bac386e3752a0deb129e77c0f24782b0645e9def8c0401fd645de891be
+"Whole-vessel ResEnc-L, Split 2","ImageCAS Split 2, 700/50","four-split result, out-of-sample trees",1132337255,70d6ad85320a6fbaff4117d2142665720a1499e7254cbce3382593a9ad723fd0
+"Whole-vessel ResEnc-L, Split 3","ImageCAS Split 3, 700/50","four-split result, out-of-sample trees",1132337255,eacf9a002168ae91247f395f8d15cc316dc42525951d8d12709f62e4d56ed21a
+"Whole-vessel ResEnc-L, Split 4","ImageCAS Split 4, 700/50","four-split result, out-of-sample trees",1132337255,1cdacf77099d86d0d392be080a00cfba5cf7b67b9c5d1a98212054442d52726b
+"Baseline U-Net, Split 1","ImageCAS Split 1, 700/50",Split 1 first access,246489935,b6d832a7f36906539dd57f76a2349923927ecc0782883432c329bd4036afbd12
+U-Net continued to 500 epochs,"ImageCAS Split 1, 700/50",Split 1 ensemble member,246572623,6d6a3226088d10924960d36baf7283ee2495fce23b570062f8af47e53d1938d9
+ResEnc-L fine-tuned for 250 epochs,"ImageCAS Split 1, 700/50",Split 1 ensemble member,1132337319,ec05e7f1933b536b1607cb50fc620c71e21f3354dbd021b617ec2abf378664da
+EAT network,"ImageCAS-X 560/80, rule-generated targets",EAT inference path,246489615,27a72319119d365d736b6568df4ef8e58f123100668bdfab754102a5e7d8bfec
+Calcium ResEnc-L,COCA gated 582/78,companion calcium module,1106806247,6394c3dc606ea0039db5d56bc878d79bad5526ca22749067817db4e897a1d4ca
+"Whole-vessel ResEnc-L 1000 epochs, Split 1","ImageCAS Split 1, 700/50","Split 1 four-member ensemble member (sixth test access); alone below the 250-epoch model on validation",1132585511,be713925bf9c6d40e14b0a2dd4cc68b4c99e0d61756f402cc7496e6b9e7acd2b

@@ -1,0 +1,6 @@
+configuration,hysteresis_low,min_component_mm3,n,dice,cldice,hd95_mm,component_count_error,coverage_1mm
+M1,0.0,0.0,80,0.9132,0.9382,2.381,3.225,0.9527
+M1 + hysteresis,0.3,0.0,80,0.9156,0.9383,2.437,2.763,0.9538
+M1 + M3,0.0,0.0,80,0.9145,0.9373,2.379,4.975,0.9569
+M1 + M3 + component filter,0.0,10.0,80,0.915,0.9388,2.614,1.15,0.9465
+M1 + hysteresis + component filter,0.3,10.0,80,0.9161,0.9395,2.599,0.9,0.949

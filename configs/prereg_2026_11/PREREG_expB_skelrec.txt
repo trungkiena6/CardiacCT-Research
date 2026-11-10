@@ -1,0 +1,52 @@
+# Pre-registration — experiment B: Skeleton Recall loss for the ResEnc-L lumen model (Split 1, validation only)
+
+Written 03/11/2026 09:20 (local), before any training. Pod copy: `/workspace/rerun/PREREG_expB_skelrec.md`.
+Status: **prepared, not started** — the pod's GPU is occupied by the 1000-epoch pilot until ≈ 06/11; B starts
+either after the pilot or on a second pod (user decision), with this document unchanged.
+
+## Question
+
+Does adding the Skeleton Recall term (Kirchhoff et al., ECCV 2024) to the archived ResEnc-L recipe raise the
+validation Dice? Motivation from already-reported numbers: the ensemble misses 8 % of the GT centerline length and
+under-segments (FN 17 % vs FP 13 % of GT volume); the loss rewards recall of a tubed skeleton of the label, i.e.
+exactly the thin distal segments that Dice + CE under-weights. The published clDice loss variant of this project
+(U-Net, val Dice 0.8073 vs 0.8181) lowered Dice; Skeleton Recall is a different, cheaper term and is not that
+experiment.
+
+## Fixed configuration (no tuning)
+
+- Data: ImageCAS Split 1 as prepared on the pod for the pilot (`Dataset901_ImageCAS_S1`, 700 train / 50 val,
+  `splits_final.json` with one fold, archived ResEnc-L plans `nnUNetResEncUNetL40GPlans`, patch 160×320×256,
+  batch 2, spacing 0.5×0.35×0.35). The 250 test cases are not read.
+- Trainer: `nnUNetTrainer_250epochs_NoMirroring_SkelRec` = `nnUNetTrainer_250epochs_NoMirroring` (the archived
+  recipe: 250 epochs, LR 1e-2 poly, no mirroring, nnU-Net defaults otherwise) + the official Skeleton Recall
+  mixin ported verbatim from MIC-DKFZ/Skeleton-Recall (`/workspace/rerun/skelrec/`, Apache-2.0): loss =
+  Dice + CE + w·SkeletonRecall with **w = 1** (official default), tubed skeleton (skeletonize + 2-voxel tube)
+  computed on the full-resolution target after augmentation, no skeleton term on the deep-supervision levels
+  (non-DS variant, the official default). Seed: nnU-Net default (unseeded).
+- Inference on the 50 validation cases: `checkpoint_final.pth`, step 0.5, no TTA, threshold 0.5, no
+  post-processing — identical to the pilot baseline run `pilot1000/base_val` (val Dice 0.8390, clDice 0.8982,
+  HD95 6.95, Betti-0 2.58, coverage 0.9183), scored with the same `score_segmentation.py`.
+
+## Endpoints and decision rule
+
+- Primary: mean Dice on val-50, ΔDice = SkelRec − baseline (0.8390).
+- Secondary (reported, not gates): clDice, HD95, Betti-0 error, centerline coverage@1 mm; paired bootstrap
+  95 % CI of ΔDice (10 000 resamples, seed 0).
+- **Adopt** the Skeleton Recall recipe into the final Split-1 configuration if ΔDice ≥ +0.004 and
+  Δcoverage ≥ 0 (it must not lose centerline coverage). If 0 ≤ ΔDice < +0.004 the model is **not adopted** as a
+  replacement; it may be evaluated as a fourth ensemble member on val-50 in a separately pre-registered step.
+  If ΔDice < 0 the recipe is discarded.
+- Any adopted change touches the Split-1 test set only once, together with the other adopted changes
+  (post-processing A, pilot if GO), under a final pre-registration; the test result is reported whatever its sign.
+
+## Cost and logistics
+
+≈ 250 × 260 s ≈ 18 h of A100 when the GPU is free (the skeleton transform adds ≈ 0.6 s per sample on CPU, hidden by
+the 16 augmentation workers), + ≈ 15 min validation inference. Script `/workspace/rerun/expB_skelrec_s1.sh`, log
+`/workspace/expB.log` (markers B TRAIN start / TRAIN-DONE / VAL-DONE / DELTA / B-DONE / LOI), outputs
+`/workspace/coroseg-work/expB/`. Cannot run concurrently with the pilot on one 80 GB GPU (pilot 46–58 GB + ResEnc-L
+40 GB plan).
+
+**Decision 03/11/2026 11:05 (user: "chờ pilot xong rồi chạy nhé"):** B starts automatically after the pilot writes PILOT-DONE
+(watcher `/workspace/rerun/run_expB_after_pilot.sh`, started 04:01 pod); no second pod. Design above unchanged.

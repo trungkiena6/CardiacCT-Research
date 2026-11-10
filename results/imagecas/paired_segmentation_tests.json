@@ -1,0 +1,206 @@
+{
+ "method": "second minus first on the same scans; 95% percentile bootstrap over cases (10000 resamples, seed 0); two-sided Wilcoxon signed-rank on non-zero differences",
+ "direction": "dice and cldice higher is better; hd95_mm and n_components_pred lower is better",
+ "comparisons": {
+  "imagecasx_test160_m1_postprocess_vs_m1": {
+   "first": "imagecas-x/xbench_ours_per_case.csv",
+   "second": "imagecas-x/lumen_access2_test_result.per_case.csv",
+   "metrics": {
+    "dice": {
+     "n": 160,
+     "mean_difference": 0.0032324785632783224,
+     "ci95": [
+      0.0029378659996021766,
+      0.0035305657339536646
+     ],
+     "wilcoxon_two_sided_p": 1.0115032721241475e-27,
+     "improved": 156,
+     "worsened": 4
+    },
+    "cldice": {
+     "n": 160,
+     "mean_difference": 0.0011527778444175997,
+     "ci95": [
+      0.00041578558712456056,
+      0.0019221765159376208
+     ],
+     "wilcoxon_two_sided_p": 0.0025009549264127587,
+     "improved": 95,
+     "worsened": 64
+    },
+    "hd95_mm": {
+     "n": 160,
+     "mean_difference": 0.08231980934480745,
+     "ci95": [
+      -0.0184304393491833,
+      0.1831654540525668
+     ],
+     "wilcoxon_two_sided_p": 0.054556638092853875,
+     "improved": 56,
+     "worsened": 42
+    },
+    "n_components_pred": {
+     "n": 160,
+     "mean_difference": -2.3,
+     "ci95": [
+      -2.575,
+      -2.0375
+     ],
+     "wilcoxon_two_sided_p": 1.1083975711854153e-23,
+     "improved": 0,
+     "worsened": 132
+    }
+   }
+  },
+  "imagecas_split1_three_member_vs_single": {
+   "first": "imagecas/split1_resencl_single_per_case.csv",
+   "second": "imagecas/test_access_3_per_case.csv",
+   "metrics": {
+    "dice": {
+     "n": 250,
+     "mean_difference": 0.004164029452299394,
+     "ci95": [
+      0.0033390525510597993,
+      0.005059568168076444
+     ],
+     "wilcoxon_two_sided_p": 1.4931639430417232e-20,
+     "improved": 194,
+     "worsened": 56
+    },
+    "cldice": {
+     "n": 250,
+     "mean_difference": 0.0029804608599378595,
+     "ci95": [
+      0.0017731870948746607,
+      0.004223681661765869
+     ],
+     "wilcoxon_two_sided_p": 4.936009488336164e-07,
+     "improved": 160,
+     "worsened": 90
+    },
+    "hd95_mm": {
+     "n": 250,
+     "mean_difference": -0.5175142354061105,
+     "ci95": [
+      -1.136526315903357,
+      -0.09650254647725869
+     ],
+     "wilcoxon_two_sided_p": 0.0008428112687432052,
+     "improved": 93,
+     "worsened": 140
+    },
+    "n_components_pred": {
+     "n": 250,
+     "mean_difference": 0.14,
+     "ci95": [
+      -0.048,
+      0.332
+     ],
+     "wilcoxon_two_sided_p": 0.07522781135161005,
+     "improved": 93,
+     "worsened": 72
+    }
+   }
+  },
+  "imagecas_split1_four_member_vs_single": {
+   "first": "imagecas/split1_resencl_single_per_case.csv",
+   "second": "imagecas/test_access_6_per_case.csv",
+   "metrics": {
+    "dice": {
+     "n": 250,
+     "mean_difference": 0.006869357281548302,
+     "ci95": [
+      0.005553113127441134,
+      0.008248505243380477
+     ],
+     "wilcoxon_two_sided_p": 1.9099199746248774e-23,
+     "improved": 200,
+     "worsened": 50
+    },
+    "cldice": {
+     "n": 250,
+     "mean_difference": 0.005026708014339963,
+     "ci95": [
+      0.0031448161946607813,
+      0.007003387388966604
+     ],
+     "wilcoxon_two_sided_p": 5.480240463049056e-07,
+     "improved": 159,
+     "worsened": 91
+    },
+    "hd95_mm": {
+     "n": 250,
+     "mean_difference": -0.9963708402586369,
+     "ci95": [
+      -1.6914763551655587,
+      -0.46464533102016736
+     ],
+     "wilcoxon_two_sided_p": 3.123289369061082e-06,
+     "improved": 89,
+     "worsened": 151
+    },
+    "n_components_pred": {
+     "n": 250,
+     "mean_difference": -0.256,
+     "ci95": [
+      -0.516,
+      0.016
+     ],
+     "wilcoxon_two_sided_p": 0.037982790466931926,
+     "improved": 79,
+     "worsened": 105
+    }
+   }
+  },
+  "imagecas_split1_four_member_vs_three_member": {
+   "first": "imagecas/test_access_3_per_case.csv",
+   "second": "imagecas/test_access_6_per_case.csv",
+   "metrics": {
+    "dice": {
+     "n": 250,
+     "mean_difference": 0.002705327829248908,
+     "ci95": [
+      0.0018404258857317056,
+      0.003585920789903481
+     ],
+     "wilcoxon_two_sided_p": 2.2711697134555016e-14,
+     "improved": 188,
+     "worsened": 62
+    },
+    "cldice": {
+     "n": 250,
+     "mean_difference": 0.0020462471544021033,
+     "ci95": [
+      0.0005898772500260765,
+      0.0035495788338398048
+     ],
+     "wilcoxon_two_sided_p": 0.008037841445514378,
+     "improved": 144,
+     "worsened": 106
+    },
+    "hd95_mm": {
+     "n": 250,
+     "mean_difference": -0.4788566048525262,
+     "ci95": [
+      -0.8335947883280551,
+      -0.17582040700661958
+     ],
+     "wilcoxon_two_sided_p": 0.01918162065192535,
+     "improved": 104,
+     "worsened": 133
+    },
+    "n_components_pred": {
+     "n": 250,
+     "mean_difference": -0.396,
+     "ci95": [
+      -0.62,
+      -0.164
+     ],
+     "wilcoxon_two_sided_p": 0.0002201969847973386,
+     "improved": 67,
+     "worsened": 115
+    }
+   }
+  }
+ }
+}

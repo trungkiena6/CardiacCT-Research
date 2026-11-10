@@ -1,0 +1,56 @@
+{
+ "config": "M1",
+ "low": 0.3,
+ "T": 10,
+ "go": true,
+ "chosen": {
+  "n": 80,
+  "dice": 0.9160602630892314,
+  "cldice": 0.9394942732211147,
+  "hd95_mm": 2.5988098389230894,
+  "betti0": 0.9,
+  "coverage": 0.9489706968425893
+ },
+ "m1_reference": {
+  "n": 80,
+  "dice": 0.9132042619406444,
+  "cldice": 0.9382241940843123,
+  "hd95_mm": 2.3808900852060852,
+  "betti0": 3.225,
+  "coverage": 0.9526754953449608
+ },
+ "original_rule": {
+  "config": "M1+M3",
+  "low": 0.0,
+  "T": 0,
+  "go": false,
+  "chosen": {
+   "n": 80,
+   "dice": 0.9145049433236665,
+   "cldice": 0.9372510793693862,
+   "hd95_mm": 2.378690924181089,
+   "betti0": 4.975,
+   "coverage": 0.956903074291693
+  }
+ },
+ "models": [
+  "M1",
+  "M2",
+  "M3"
+ ],
+ "n_cases": 80,
+ "min_threshold_check": 1.0,
+ "written": "2026-10-24 06:20:14 UTC",
+ "prereg_sha256": "c7e1544e411836dc2185b607c3c6f73887ed4f132eb0bde0756dd6bc73fcad91",
+ "log": [
+  "original rule (recorded):",
+  "step 1 configuration: M1+M3 (M1 0.9132, M1+M2 0.9091, M1+M3 0.9145, M2+M3 0.9088, M1+M2+M3 0.9122)",
+  "step 2 hysteresis L: 0.0 (L0.0 dice 0.9145 cldice 0.9373, L0.3 dice 0.9144 cldice 0.9309, L0.4 dice 0.9141 cldice 0.9320)",
+  "step 3 component removal T: 0 mm3 (T0 dice 0.9145 betti0 4.97 cov 0.9569, T10 dice 0.9150 betti0 1.15 cov 0.9465, T25 dice 0.9149 betti0 0.61 cov 0.9395, T50 dice 0.9147 betti0 0.24 cov 0.9313, T100 dice 0.9130 betti0 0.11 cov 0.9231, T200 dice 0.9102 betti0 0.07 cov 0.9139)",
+  "step 4 go/no-go: chosen dice 0.9145 vs M1 0.9132 (diff +0.0013, need >= +0.0020) -> NO-GO",
+  "amended rule (decides):",
+  "amended step 1-2 (configuration, L): M1, L 0.3 (M1/L0.0 0.9132, M1/L0.3 0.9156, M1/L0.4 0.9145, M1+M2/L0.0 0.9091, M1+M2/L0.3 0.9140, M1+M2/L0.4 0.9119, M1+M3/L0.0 0.9145, M2+M3/L0.0 0.9088, M1+M2+M3/L0.0 0.9122, M1+M2+M3/L0.4 0.9150)",
+  "amended step 3 component removal T: 10 mm3 (T0 dice 0.9156 cldice 0.9383 hd95 2.44 betti0 2.76, T10 dice 0.9161 cldice 0.9395 hd95 2.60 betti0 0.90, T25 dice 0.9159 cldice 0.9383 hd95 2.94 betti0 0.46, T50 dice 0.9151 cldice 0.9366 hd95 3.22 betti0 0.19, T100 dice 0.9145 cldice 0.9352 hd95 3.49 betti0 0.06, T200 dice 0.9116 cldice 0.9312 hd95 5.40 betti0 0.06)",
+  "step 4 go/no-go: chosen dice 0.9161 vs M1 0.9132 (diff +0.0029, need >= +0.0020) -> GO"
+ ]
+}

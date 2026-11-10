@@ -1,0 +1,251 @@
+{
+  "diameter_wall05": {
+    "RCA": {
+      "n_paired": 800,
+      "n_lumen": 800,
+      "n_wholevessel": 800,
+      "lumen_mean_hu": -78.4789942407608,
+      "wholevessel_mean_hu": -81.52322343349456,
+      "bias_hu": -3.0442291927337646,
+      "bias_ci95_hu": [
+        -3.2158443398513716,
+        -2.8726140456161575
+      ],
+      "sd_difference_hu": 2.472829352654719,
+      "loa95_hu": [
+        -7.890974723937014,
+        1.8025163384694851
+      ],
+      "fai_icc21": 0.8690674970909412,
+      "volume_icc21": 0.20520180796023657,
+      "lumen_volume_mean_ml": 1.2547971476984023,
+      "wholevessel_volume_mean_ml": 3.32705253688097,
+      "lumen_ge_reference": 112,
+      "wholevessel_ge_reference": 42,
+      "crossed_reference": 70,
+      "cross_lumen_high_whole_low": 70,
+      "cross_lumen_low_whole_high": 0,
+      "n_short_lumen": 2
+    },
+    "LAD": {
+      "n_paired": 800,
+      "n_lumen": 800,
+      "n_wholevessel": 800,
+      "lumen_mean_hu": -77.20959639072419,
+      "wholevessel_mean_hu": -81.45450601100922,
+      "bias_hu": -4.244909620285034,
+      "bias_ci95_hu": [
+        -4.420302166479077,
+        -4.0695170740909905
+      ],
+      "sd_difference_hu": 2.5272584835897676,
+      "loa95_hu": [
+        -9.198336248120977,
+        0.7085170075509106
+      ],
+      "fai_icc21": 0.795972758932984,
+      "volume_icc21": 0.2019358216305103,
+      "lumen_volume_mean_ml": 0.9705922643089293,
+      "wholevessel_volume_mean_ml": 2.584123759174347,
+      "lumen_ge_reference": 128,
+      "wholevessel_ge_reference": 35,
+      "crossed_reference": 93,
+      "cross_lumen_high_whole_low": 93,
+      "cross_lumen_low_whole_high": 0,
+      "n_short_lumen": 0
+    },
+    "LCx": {
+      "n_paired": 800,
+      "n_lumen": 800,
+      "n_wholevessel": 800,
+      "lumen_mean_hu": -76.03091917514801,
+      "wholevessel_mean_hu": -79.80727720737457,
+      "bias_hu": -3.7763580322265624,
+      "bias_ci95_hu": [
+        -3.9537779219345834,
+        -3.5989381425185414
+      ],
+      "sd_difference_hu": 2.556470791672591,
+      "loa95_hu": [
+        -8.78704078390484,
+        1.2343247194517164
+      ],
+      "fai_icc21": 0.8261486778214977,
+      "volume_icc21": 0.24071091259427815,
+      "lumen_volume_mean_ml": 0.6847853728008271,
+      "wholevessel_volume_mean_ml": 1.7889337795114517,
+      "lumen_ge_reference": 159,
+      "wholevessel_ge_reference": 67,
+      "crossed_reference": 98,
+      "cross_lumen_high_whole_low": 95,
+      "cross_lumen_low_whole_high": 3,
+      "n_short_lumen": 0
+    }
+  },
+  "diameter_wall00": {
+    "RCA": {
+      "n_paired": 800,
+      "n_lumen": 800,
+      "n_wholevessel": 800,
+      "lumen_mean_hu": -76.59351039409637,
+      "wholevessel_mean_hu": -80.93850175857544,
+      "bias_hu": -4.344991364479065,
+      "bias_ci95_hu": [
+        -4.562833575225708,
+        -4.127149153732422
+      ],
+      "sd_difference_hu": 3.1389223039405425,
+      "loa95_hu": [
+        -10.497279080202528,
+        1.807296351244398
+      ],
+      "fai_icc21": 0.7787331369075408,
+      "volume_icc21": 0.1669291289594009,
+      "lumen_volume_mean_ml": 0.8787913633537292,
+      "wholevessel_volume_mean_ml": 2.899356393251419,
+      "lumen_ge_reference": 155,
+      "wholevessel_ge_reference": 51,
+      "crossed_reference": 104,
+      "cross_lumen_high_whole_low": 104,
+      "cross_lumen_low_whole_high": 0,
+      "n_short_lumen": 2
+    },
+    "LAD": {
+      "n_paired": 800,
+      "n_lumen": 800,
+      "n_wholevessel": 800,
+      "lumen_mean_hu": -74.80604281425477,
+      "wholevessel_mean_hu": -80.77037386894226,
+      "bias_hu": -5.9643310546875,
+      "bias_ci95_hu": [
+        -6.190522913651898,
+        -5.738139195723103
+      ],
+      "sd_difference_hu": 3.259233684048822,
+      "loa95_hu": [
+        -12.352429075423192,
+        0.4237669660481904
+      ],
+      "fai_icc21": 0.6670342793096934,
+      "volume_icc21": 0.16179895366456964,
+      "lumen_volume_mean_ml": 0.6537259290409088,
+      "wholevessel_volume_mean_ml": 2.231970339457989,
+      "lumen_ge_reference": 208,
+      "wholevessel_ge_reference": 43,
+      "crossed_reference": 165,
+      "cross_lumen_high_whole_low": 165,
+      "cross_lumen_low_whole_high": 0,
+      "n_short_lumen": 0
+    },
+    "LCx": {
+      "n_paired": 800,
+      "n_lumen": 800,
+      "n_wholevessel": 800,
+      "lumen_mean_hu": -73.63205646038055,
+      "wholevessel_mean_hu": -79.11103942871094,
+      "bias_hu": -5.478982968330383,
+      "bias_ci95_hu": [
+        -5.707654023479229,
+        -5.2503119131815374
+      ],
+      "sd_difference_hu": 3.2949568075542954,
+      "loa95_hu": [
+        -11.937098311136802,
+        0.9791323744760358
+      ],
+      "fai_icc21": 0.6936323479953042,
+      "volume_icc21": 0.18722445317220668,
+      "lumen_volume_mean_ml": 0.44558312371492387,
+      "wholevessel_volume_mean_ml": 1.5435255529260636,
+      "lumen_ge_reference": 250,
+      "wholevessel_ge_reference": 77,
+      "crossed_reference": 175,
+      "cross_lumen_high_whole_low": 174,
+      "cross_lumen_low_whole_high": 1,
+      "n_short_lumen": 0
+    }
+  },
+  "surface05_35": {
+    "RCA": {
+      "n_paired": 800,
+      "n_lumen": 800,
+      "n_wholevessel": 800,
+      "lumen_mean_hu": -79.64271148204803,
+      "wholevessel_mean_hu": -81.87169711112976,
+      "bias_hu": -2.228985629081726,
+      "bias_ci95_hu": [
+        -2.303597022473779,
+        -2.154374235689673
+      ],
+      "sd_difference_hu": 1.075087174536522,
+      "loa95_hu": [
+        -4.336156491173309,
+        -0.12181476699014304
+      ],
+      "fai_icc21": 0.9481679168499763,
+      "volume_icc21": 0.5141410495305403,
+      "lumen_volume_mean_ml": 1.579216008296013,
+      "wholevessel_volume_mean_ml": 2.1202294342184067,
+      "lumen_ge_reference": 80,
+      "wholevessel_ge_reference": 48,
+      "crossed_reference": 32,
+      "cross_lumen_high_whole_low": 32,
+      "cross_lumen_low_whole_high": 0,
+      "n_short_lumen": 2
+    },
+    "LAD": {
+      "n_paired": 800,
+      "n_lumen": 800,
+      "n_wholevessel": 800,
+      "lumen_mean_hu": -79.60258999347687,
+      "wholevessel_mean_hu": -82.3127646970749,
+      "bias_hu": -2.7101747035980224,
+      "bias_ci95_hu": [
+        -2.782915295443367,
+        -2.6374341117526776
+      ],
+      "sd_difference_hu": 1.0481305040130167,
+      "loa95_hu": [
+        -4.764510491463534,
+        -0.65583891573251
+      ],
+      "fai_icc21": 0.9252774446858063,
+      "volume_icc21": 0.6470022038794875,
+      "lumen_volume_mean_ml": 1.415214800133705,
+      "wholevessel_volume_mean_ml": 1.7889946894478799,
+      "lumen_ge_reference": 61,
+      "wholevessel_ge_reference": 32,
+      "crossed_reference": 29,
+      "cross_lumen_high_whole_low": 29,
+      "cross_lumen_low_whole_high": 0,
+      "n_short_lumen": 0
+    },
+    "LCx": {
+      "n_paired": 799,
+      "n_lumen": 800,
+      "n_wholevessel": 799,
+      "lumen_mean_hu": -78.14299634281774,
+      "wholevessel_mean_hu": -80.42882305808897,
+      "bias_hu": -2.285826715271225,
+      "bias_ci95_hu": [
+        -2.3932949742327745,
+        -2.1783584563096756
+      ],
+      "sd_difference_hu": 1.5475557880389414,
+      "loa95_hu": [
+        -5.31903605982755,
+        0.7473826292851
+      ],
+      "fai_icc21": 0.9350188959297157,
+      "volume_icc21": 0.7629475627074417,
+      "lumen_volume_mean_ml": 1.1050391073835657,
+      "wholevessel_volume_mean_ml": 1.3176748417101156,
+      "lumen_ge_reference": 99,
+      "wholevessel_ge_reference": 60,
+      "crossed_reference": 45,
+      "cross_lumen_high_whole_low": 42,
+      "cross_lumen_low_whole_high": 3,
+      "n_short_lumen": 0
+    }
+  }
+}

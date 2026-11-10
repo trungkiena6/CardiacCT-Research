@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+venv/
+.venv/
+build/
+dist/
+*.egg-info/
+
+# Generated figures
+/figures/
+
+# Never commit data, weights or credentials
+*.nii
+*.nii.gz
+*.dcm
+*.npz
+*.pth
+*.pt
+*.ckpt
+*.b2nd
+.kaggle_token
+kaggle.json
+.env
+
+# Controlled-access per-patient tables
+artifacts/multid4cad/*_per_patient.csv
+results/multid4cad/*_per_patient.csv
+results/coca/*_per_patient.csv
+
+# Local prediction-cache identities
+.prediction_cache.json
+*.cache.json
+
+# Private execution artifacts and local reports
+/private/
+/release-reports/

@@ -1,0 +1,23 @@
+{
+  "analysis_intent": "post hoc exploratory sensitivity; specified before generating new shell results",
+  "mask_sources": [
+    "ImageCAS-X expert lumen",
+    "original ImageCAS whole-vessel"
+  ],
+  "diameter_wall05": "r + 0.5 < d <= 3r + 0.5 mm (original routine)",
+  "diameter_wall00": "r < d <= 3r mm",
+  "surface05_35": "0.5 < distance to nearest mask voxel centre <= 3.5 mm, intersected with d <= r + 3.5 mm selected-centreline envelope",
+  "surface_distance_caveat": "EDT distance uses voxel centres, not a subvoxel reconstructed surface. The envelope restricts neighbouring branches but does not isolate identical tissue when masks differ.",
+  "held_fixed": "CT, expert tree, selected segment and resampling, original 12 mm crop, HU window [-190,-30], radius floor 0.6 mm, heart/aorta exclusion (51/52), exclusion of all coronary-mask voxels",
+  "notation": "d is distance to selected resampled expert centreline; r is inner-mask EDT sampled at the nearest centreline point and floored at 0.6 mm",
+  "endpoints": [
+    "paired whole-minus-lumen FAI bias and two-sided t 95% CI",
+    "SD and 95% Bland-Altman limits (bias +/- 1.96 SD)",
+    "absolute agreement ICC(2,1) for FAI and volume",
+    "valid paired counts",
+    "counts crossing either direction of exploratory -70.1 HU reference"
+  ],
+  "validity": "finite FAI values from both masks; retain short segments as in baseline and report flags; count errors and missing outputs",
+  "interpretation": "Report every configuration regardless of direction. Persistence supports robustness only to tested shell choices; attenuation of bias limits interpretation to routine-specific geometry. Neither isolates label convention from annotation source. Threshold crossings are descriptive, not clinical reclassification; no kVp or FAI correction is available.",
+  "training_or_inference": "none; use locally cached expert tree.json and existing CT/masks/frame"
+}

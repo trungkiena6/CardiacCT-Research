@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools>=78.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cardiacct-research"
+dynamic = ["version"]
+description = "Coronary segmentation evaluation and anatomical measurement tools for CCTA research"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    {name = "Hien M. Tran"},
+    {name = "Hien T. T. Pham"},
+    {name = "Tan D. Le"},
+    {name = "Hieu X. Nguyen"},
+    {name = "Anh P. T. Mai"},
+]
+dependencies = [
+    "nibabel>=5.2,<6",
+    "numpy>=1.26,<3",
+    "scipy>=1.11,<2",
+    "scikit-image>=0.23,<1",
+]
+
+[project.optional-dependencies]
+tree = ["networkx>=3.2,<4", "skan>=0.13,<1", "pillow>=10,<13"]
+analysis = [
+    "SimpleITK>=2.3,<3",
+    "pillow>=10,<13",
+    "vtk>=9.2,<10",
+    "matplotlib>=3.8,<4",
+    "scikit-learn>=1.4,<2",
+    "statsmodels>=0.14,<1",
+    "pandas>=2.1,<4",
+    "openpyxl>=3.1,<4",
+    "pydicom>=3,<4",
+]
+training = ["nnunetv2==2.8.1"]
+anatomy = ["TotalSegmentator==2.18.0"]
+dev = ["pytest>=8,<10", "ruff==0.17.3"]
+
+[project.urls]
+Repository = "https://github.com/HarryTRAN207/CardiacCT-Research"
+
+[project.scripts]
+coronary-evaluate = "coronary_tree.evaluate.segmentation:main"
+coronary-postprocess = "coronary_tree.evaluate.postprocess:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+version = {attr = "coronary_tree.__version__"}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["src", "scripts", "scripts/calcium"]
+
+[tool.ruff.lint]
+select = ["E9", "F63", "F7", "F82", "I"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"

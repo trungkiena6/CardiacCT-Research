@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "Cite this research software and its accompanying manuscript in preparation."
+title: "An Automated Framework Integrating Deep Learning and Anatomical Reasoning for Cardiac Phenotyping From CCTA"
+authors:
+  - family-names: "Tran"
+    given-names: "Hien M."
+  - family-names: "Pham"
+    given-names: "Hien T. T."
+  - family-names: "Le"
+    given-names: "Tan D."
+  - family-names: "Nguyen"
+    given-names: "Hieu X."
+  - family-names: "Mai"
+    given-names: "Anh P. T."
+version: "0.3.0"
+license: MIT
+repository-code: "https://github.com/HarryTRAN207/CardiacCT-Research"
+preferred-citation:
+  type: generic
+  title: "An Automated Framework Integrating Deep Learning and Anatomical Reasoning for Cardiac Phenotyping From CCTA"
+  year: 2026
+  authors:
+    - family-names: "Tran"
+      given-names: "Hien M."
+    - family-names: "Pham"
+      given-names: "Hien T. T."
+    - family-names: "Le"
+      given-names: "Tan D."
+    - family-names: "Nguyen"
+      given-names: "Hieu X."
+    - family-names: "Mai"
+      given-names: "Anh P. T."

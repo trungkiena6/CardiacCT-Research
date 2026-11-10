@@ -1,0 +1,47 @@
+# Pre-registration — Thử nghiệm 1000 epoch trên ImageCAS Split 1 (chỉ validation, không chạm test)
+
+Ghi lúc 02/11/2026 20:25 (giờ máy local), trước khi huấn luyện. Bản sao trên Pod: `/workspace/rerun/PREREG_pilot1000.md`.
+
+## Câu hỏi
+
+Mục tiêu của tác giả là vượt DiffCAS (Dice 84.59, partition không công bố) trên bốn split chính thức của ImageCAS.
+ResEnc-L đơn hiện tại (250 epoch) đạt 83.50 trung bình bốn split; ensemble ba thành viên thêm +0.41 trên Split 1.
+Đòn bẩy còn lại có cơ sở là lịch huấn luyện dài hơn (nnU-Net mặc định 1000 epoch). Thử nghiệm này đo trên **50 ca
+validation của Split 1** xem ResEnc-L 1000 epoch hơn ResEnc-L 250 epoch bao nhiêu, để quyết định có đầu tư cho
+Split 2–4 hay không. **Không chạm tập test của bất kỳ split nào.**
+
+## Mô hình thử
+
+| Thành phần | Giá trị |
+|---|---|
+| Dữ liệu | Split 1 chính thức: 700 train / 50 val (`splits_final.json` một fold, như bản gốc) |
+| Plans | `nnUNetResEncUNetL40GPlans` lấy từ `plans.json` đi kèm checkpoint ResEnc-L Split 1 đã lưu (cùng kiến trúc, patch 160×320×256, batch 2) |
+| Trainer | `nnUNetTrainer_1000epochs_NoMirroring` = `nnUNetTrainer_250epochs_NoMirroring` với `num_epochs = 1000`; LR 1e-2 poly, SGD Nesterov, không lật ảnh, mọi thứ khác mặc định nnU-Net 2.8.1 |
+| Checkpoint đánh giá | `checkpoint_final.pth` (epoch 1000); `checkpoint_best.pth` chỉ ghi nhận |
+| Suy luận | step 0.5, `--disable_tta`, ngưỡng 0.5, không lọc thành phần — đúng cấu hình đã dùng khi ghi val của mô hình 250 epoch |
+| Chấm | `scripts/score_segmentation.py` trên 50 ca val (Dice, clDice, HD95, Betti-0, coverage) |
+
+## Mốc so sánh
+
+- ResEnc-L 250 epoch, cùng cấu hình suy luận, val Dice **0.8390** (ghi trong `PREREG_test_access_2.md`, access 2, 06/10/2026).
+- Để kiểm tra pipeline, mô hình 250 epoch đã lưu được chấm lại trên val trong cùng script trước khi huấn luyện
+  (`BASE-VAL-DONE`); giá trị chấm lại là mốc chính thức nếu khác 0.8390 (sai khác GPU nhỏ).
+
+## Quy tắc quyết định (ghi trước)
+
+- Δ = Dice val (1000 epoch) − Dice val (250 epoch, chấm lại).
+- **Δ ≥ +0.006 (0.6 điểm)** → đi tiếp giai đoạn B: huấn luyện 1000 epoch cho Split 2, 3, 4, thêm hai thành viên ensemble
+  mỗi split, một lần chạm test mỗi split với cấu hình cố định (sẽ pre-register riêng).
+- **Δ < +0.006** → dừng; paper dùng số đo thật hiện có.
+- Nếu Δ đạt ngưỡng, Split 1 test **không** được chấm lại chỉ vì mô hình mới (đã chạm 5 lần); mô hình 1000 epoch Split 1
+  chỉ được chấm test khi là thành viên của cấu hình bốn split đã cố định trong pre-registration giai đoạn B.
+
+## Chi phí
+
+ResEnc-L ≈ 260 s/epoch trên A100 80 GB khi chạy một mình → ≈ 72 h; chạy chung GPU với pha 2–3 (≈ 12 h đầu) chậm hơn.
+Dự kiến xong ≈ 06/11/2026. Script tiếp tục từ checkpoint_latest nếu Pod khởi động lại (`--c`).
+
+## Ghi chép
+
+Mốc trong `/workspace/pilot.log`: DATA-READY, BASE-VAL-DONE, TRAIN start, TRAIN-DONE, VAL-DONE, DELTA, LOI.
+Kết quả về `D:\imagecas-work\rebuild\pod_out\pilot1000\` và `REBUILD_PLAN.md` mục 3.

@@ -1,0 +1,6 @@
+# Direct package versions read from D:/imagecas-work/tsvenv on 17 Oct 2026.
+# This fragment is separate from requirements.lock.txt and is not a complete lock.
+# Current tsvenv uses torch 2.14.1+cu126 and numpy 2.5.4; do not silently combine
+# those versions with the historical lumen-model workstation lock.
+TotalSegmentator==2.18.0
+pydicom==3.0.2

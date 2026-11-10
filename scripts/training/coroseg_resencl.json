@@ -1,0 +1,4 @@
+{
+  "method_name": "coroseg_resencl",
+  "model": {"name": "nnunet"}
+}

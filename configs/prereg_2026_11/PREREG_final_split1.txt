@@ -1,0 +1,70 @@
+# Pre-registration — final Split-1 configuration and the single sixth test access
+
+Written 03/11/2026 13:40 (local), before the pilot (1000 epochs), experiment B (Skeleton Recall) or any seed replicate
+has produced a validation number. Pod copy: `/workspace/rerun/PREREG_final_split1.md`. User instruction (03/11, 12:50):
+"tiếp tục & hoàn thiện" — complete the chain; the target the user cares about is a measured Split-1 test Dice ≥ 0.846
+(DiffCAS 84.59). This document fixes how the remaining models are combined and when the test set is touched, so that
+nothing is chosen on the test set and the test result is reported whatever its value.
+
+## Pool of candidate members (all trained on the 700 Split-1 training cases only)
+
+| Member | Trainer / plans | Status 03/11 | Enters the pool if |
+|---|---|---|---|
+| `unet_ft500` | `nnUNetTrainer_ft500_NM` / `nnUNetPlans` | archived (access 3) | always (baseline trio) |
+| `resenc_l` | `nnUNetTrainer_250epochs_NoMirroring` / `nnUNetResEncUNetL40GPlans` | archived | always |
+| `resenc_l_ft` | `nnUNetTrainer_ft250_NM` / ResEnc-L plans | archived | always |
+| `pilot1000` | `nnUNetTrainer_1000epochs_NoMirroring` / ResEnc-L plans | training (epoch 90) | single val Dice (step 0.25) ≥ 0.8340 |
+| `expB` | `nnUNetTrainer_250epochs_NoMirroring_SkelRec` / ResEnc-L plans | queued after the pilot | B verdict ≠ DISCARD (PREREG_expB: ΔDice ≥ 0 at step 0.5) **and** single val Dice (step 0.25) ≥ 0.8340 |
+| `resenc_l_s2`, `resenc_l_s3` | `nnUNetTrainer_250epochs_NoMirroring_seed{2,3}` (archived recipe, new random seed) / ResEnc-L plans | trained only if the gate below fails (experiment C) | single val Dice (step 0.25) ≥ 0.8340 |
+
+0.8340 = archived ResEnc-L val Dice 0.8390 (step 0.5) − 0.005: a sanity floor that excludes a broken run, not a
+selection. The pilot's GO/NO-GO rule (ΔDice ≥ +0.006, about Splits 2–4) and B's adoption rule stay as written; here both
+models are judged only as ensemble members.
+
+## Inference and combination (fixed, identical to access 3)
+
+`checkpoint_final.pth`, sliding-window step 0.25, no TTA, probabilities saved; equal weights, mean foreground probability
+≥ 0.5, **no** component filter (T = 0: post-processing A found T = 10 mm³ worth +0.00008 only). The three archived members'
+validation probabilities are the ones computed for post-processing A (`W/testaccess3/val/<m>__checkpoint_final__s0.25`,
+content-verified caches); every other member is predicted once on val and, if chosen, once on test.
+
+## Selection on the 50 validation cases (Case0701–0750)
+
+Candidate ensembles — a deliberately small family, not an exhaustive subset search:
+
+1. ALL = every pool member;
+2. ALL minus one member, for each member (leave-one-out);
+3. the access-3 trio `unet_ft500 + resenc_l + resenc_l_ft` (baseline, val Dice 0.8439).
+
+Choice = highest mean val Dice; ties within 0.0005 → the larger set; still tied → alphabetical tag. Secondary metrics
+(clDice, HD95, Betti-0, coverage) are recorded, not used. Single-member val results are recorded for the pool rule only.
+
+## Gate for the test access, and experiment C
+
+- **Gate: chosen val Dice ≥ 0.8460.** Access-3 val and test agreed to 0.0002 (0.8439 / 0.8437), so the gate is the honest
+  prediction that the test will be ≥ 0.846; it is not a guarantee.
+- Gate passes → the sixth test access runs automatically (below).
+- Gate fails → experiment C: train `resenc_l_s2` (archived recipe, ≈ 18 h), redo the selection with the enlarged pool,
+  re-test the gate; still failing → `resenc_l_s3`, selection, gate. At most two seeds.
+- Gate still failing after the full pool → **the test set is not touched**; the chain stops and the user decides.
+
+## Sixth test access (Split 1, 250 cases, Case0751–1000)
+
+Predict the chosen members on `W/test_in` (step 0.25, no TTA, probabilities), accumulate the per-case probability sum
+(members added one at a time, npz deleted afterwards for disk space), mean ≥ 0.5 → masks `W/final6/test/FINAL`, score with
+`score_segmentation.py` → `W/final6/test/final_per_case.csv`, bootstrap 95 % CI (10 000, seed 0), paired difference to
+access 3 (`W/testaccess3/test/final_per_case.csv`). Output `W/test_access_6_result.json`; refused if it exists.
+Before the test stage, the sum-and-threshold code path is verified on val against the subset evaluation of the same
+members (per-case Dice must agree to 1e-6) — self-check only, no test data.
+
+Ledger: Split-1 test touches so far = 5 (access 1–3, lumen access 2, phase-2 replication of access 3); this is the 6th
+and the last of this rerun. Splits 2–4 are not touched. The result enters the paper as what it is, with the ledger.
+
+## Automation
+
+`/workspace/rerun/final_chain.sh` (nohup, started 03/11 after this document): waits for `B (B-DONE|LOI)` in
+`/workspace/expB.log` (B itself waits for `PILOT-DONE`), then `final6_pool.py val` → gate → [C seeds] → `final6_pool.py test`.
+Markers in `/workspace/final6.log`: `F VAL start / MEMBER <m> / SINGLE / ENS / CHOICE / GATE PASS|FAIL / SELFCHECK /
+TEST start / TEST-DONE / LOI / CHAIN-DONE`; seeds in `/workspace/expC.log`.
+Expected: B-DONE ≈ 07/11 03:00 local → VAL-DONE ≈ 07/11 05:00 → (gate pass) TEST-DONE ≈ 07/11 late evening;
+each seed adds ≈ 20 h.

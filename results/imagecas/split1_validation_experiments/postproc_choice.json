@@ -1,0 +1,66 @@
+{
+ "prereg": "PREREG_postproc_A.md",
+ "baseline": {
+  "n": 50,
+  "dice": 0.8439013982863672,
+  "cldice": 0.9016022279124052,
+  "hd95_mm": 6.851075655137141,
+  "betti0_err": 2.36,
+  "coverage_1mm": 0.923584755121258,
+  "kind": "plain",
+  "t": 0.5,
+  "gate_mm": 0,
+  "T_mm3": 0,
+  "name": "plain0.50_g0_T0"
+ },
+ "winner_T0": {
+  "n": 50,
+  "dice": 0.8439013982863672,
+  "cldice": 0.9016022279124052,
+  "hd95_mm": 6.851075655137141,
+  "betti0_err": 2.36,
+  "coverage_1mm": 0.923584755121258,
+  "kind": "plain",
+  "t": 0.5,
+  "gate_mm": 0,
+  "T_mm3": 0,
+  "name": "plain0.50_g0_T0"
+ },
+ "T_step": {
+  "10": {
+   "n": 50,
+   "dice": 0.8439842976060143,
+   "cldice": 0.9019369630912327,
+   "hd95_mm": 6.91191019796378,
+   "betti0_err": 1.32,
+   "coverage_1mm": 0.9222997402472001,
+   "kind": "plain",
+   "t": 0.5,
+   "gate_mm": 0,
+   "T_mm3": 10,
+   "name": "plain0.50_g0_T10"
+  }
+ },
+ "chosen": {
+  "n": 50,
+  "dice": 0.8439842976060143,
+  "cldice": 0.9019369630912327,
+  "hd95_mm": 6.91191019796378,
+  "betti0_err": 1.32,
+  "coverage_1mm": 0.9222997402472001,
+  "kind": "plain",
+  "t": 0.5,
+  "gate_mm": 0,
+  "T_mm3": 10,
+  "name": "plain0.50_g0_T10"
+ },
+ "delta_dice": 8.289931964711172e-05,
+ "delta_cldice": 0.0003347351788275388,
+ "delta_dice_paired_ci95": [
+  1.2668713512545395e-05,
+  0.00016209678036426756
+ ],
+ "rule": "adopt if delta_dice >= 0.0015 and delta_cldice >= -0.005 (val-50)",
+ "adopt": false,
+ "test_access": "none in this step"
+}

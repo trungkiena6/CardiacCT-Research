@@ -1,0 +1,367 @@
+{
+ "prereg": "PREREG_final_split1.md",
+ "access": "Split-1 test access 6 (the last of the 11/2026 rerun)",
+ "choice": {
+  "prereg": "PREREG_final_split1.md",
+  "pool": [
+   "unet_ft500",
+   "resenc_l",
+   "resenc_l_ft",
+   "pilot1000"
+  ],
+  "excluded": {
+   "expB": "B verdict: DISCARD (dice < 0)",
+   "resenc_l_s2": "no checkpoint_final.pth",
+   "resenc_l_s3": "no checkpoint_final.pth"
+  },
+  "single": {
+   "unet_ft500": {
+    "n": 50,
+    "dice": 0.830256,
+    "cldice": 0.886058,
+    "hd95_mm": 10.208619,
+    "betti0_err": 6.78,
+    "coverage_1mm": 0.938333
+   },
+   "resenc_l": {
+    "n": 50,
+    "dice": 0.840924,
+    "cldice": 0.899195,
+    "hd95_mm": 6.951818,
+    "betti0_err": 2.38,
+    "coverage_1mm": 0.917893
+   },
+   "resenc_l_ft": {
+    "n": 50,
+    "dice": 0.840431,
+    "cldice": 0.898509,
+    "hd95_mm": 7.160139,
+    "betti0_err": 2.48,
+    "coverage_1mm": 0.91142
+   },
+   "pilot1000": {
+    "n": 50,
+    "dice": 0.838719,
+    "cldice": 0.894063,
+    "hd95_mm": 8.088623,
+    "betti0_err": 2.82,
+    "coverage_1mm": 0.912131
+   },
+   "expB": {
+    "n": 50,
+    "dice": 0.838882,
+    "cldice": 0.895122,
+    "hd95_mm": 8.033161,
+    "betti0_err": 4.02,
+    "coverage_1mm": 0.944989
+   }
+  },
+  "candidates": {
+   "pilot1000+resenc_l+resenc_l_ft": {
+    "n": 50,
+    "dice": 0.846075,
+    "cldice": 0.903717,
+    "hd95_mm": 6.424846,
+    "betti0_err": 1.92,
+    "coverage_1mm": 0.918793
+   },
+   "pilot1000+resenc_l+resenc_l_ft+unet_ft500": {
+    "n": 50,
+    "dice": 0.846883,
+    "cldice": 0.904986,
+    "hd95_mm": 6.983199,
+    "betti0_err": 2.08,
+    "coverage_1mm": 0.921825
+   },
+   "pilot1000+resenc_l+unet_ft500": {
+    "n": 50,
+    "dice": 0.845942,
+    "cldice": 0.903932,
+    "hd95_mm": 7.487125,
+    "betti0_err": 2.68,
+    "coverage_1mm": 0.92812
+   },
+   "pilot1000+resenc_l_ft+unet_ft500": {
+    "n": 50,
+    "dice": 0.846341,
+    "cldice": 0.904294,
+    "hd95_mm": 7.131821,
+    "betti0_err": 2.6,
+    "coverage_1mm": 0.924154
+   },
+   "resenc_l+resenc_l_ft+unet_ft500": {
+    "n": 50,
+    "dice": 0.843901,
+    "cldice": 0.901602,
+    "hd95_mm": 6.851076,
+    "betti0_err": 2.36,
+    "coverage_1mm": 0.923585
+   }
+  },
+  "chosen": "pilot1000+resenc_l+resenc_l_ft+unet_ft500",
+  "members": [
+   "pilot1000",
+   "resenc_l",
+   "resenc_l_ft",
+   "unet_ft500"
+  ],
+  "val": {
+   "n": 50,
+   "dice": 0.846883,
+   "cldice": 0.904986,
+   "hd95_mm": 6.983199,
+   "betti0_err": 2.08,
+   "coverage_1mm": 0.921825
+  },
+  "tied_within": 0.0005,
+  "tied": [
+   "pilot1000+resenc_l+resenc_l_ft+unet_ft500"
+  ],
+  "gate_rule": "val dice >= 0.846",
+  "gate": "PASS",
+  "step": 0.25,
+  "weights": "equal",
+  "threshold": 0.5,
+  "T_mm3": 0,
+  "test_access": "none in this stage",
+  "written": "2026-11-06_21:03:42"
+ },
+ "members": [
+  "pilot1000",
+  "resenc_l",
+  "resenc_l_ft",
+  "unet_ft500"
+ ],
+ "test": {
+  "n": 250,
+  "dice": 0.8464272492444908,
+  "cldice": 0.9001841765137613,
+  "hd95_mm": 7.893866585175061,
+  "betti0_err": 2.52,
+  "coverage_1mm": 0.917614174761904
+ },
+ "ci95": {
+  "dice": [
+   0.8408528439986511,
+   0.8518063317359911
+  ],
+  "cldice": [
+   0.8945882154527673,
+   0.9058279030399805
+  ],
+  "hd95_mm": [
+   7.031981605530554,
+   8.796289914149655
+  ],
+  "gt_centerline_coverage_1mm": [
+   0.9103394540863186,
+   0.9247101731986872
+  ]
+ },
+ "paired_vs_access3": {
+  "dice": {
+   "mean_diff_vs_access3": 0.0027050932446981697,
+   "ci95": [
+    0.0018394664176013677,
+    0.0035857490124107244
+   ]
+  },
+  "cldice": {
+   "mean_diff_vs_access3": 0.002055379005304525,
+   "ci95": [
+    0.0006018925956144582,
+    0.0035679492672649736
+   ]
+  },
+  "hd95_mm": {
+   "mean_diff_vs_access3": -0.4788053905978951,
+   "ci95": [
+    -0.833476412882077,
+    -0.17592131017889076
+   ]
+  },
+  "gt_centerline_coverage_1mm": {
+   "mean_diff_vs_access3": -0.0026607510992479907,
+   "ci95": [
+    -0.0043592418002291414,
+    -0.0009400091511767298
+   ]
+  }
+ },
+ "provenance": {
+  "pilot1000": {
+   "member": "pilot1000",
+   "trainer": "nnUNetTrainer_1000epochs_NoMirroring",
+   "plans": "nnUNetResEncUNetL40GPlans",
+   "step": 0.25,
+   "tta": false,
+   "checkpoint": "checkpoint_final.pth",
+   "checkpoint_sha256": "be713925bf9c6d40e14b0a2dd4cc68b4c99e0d61756f402cc7496e6b9e7acd2b",
+   "plans_sha256": "84622caf07eb3b0be5eac65bc753fdb5c9ec5f5b0abe53530cee74c253b283c9",
+   "images": "/workspace/coroseg-work/test_in",
+   "n": 250,
+   "command": [
+    "nnUNetv2_predict",
+    "-i",
+    "/workspace/coroseg-work/test_in",
+    "-o",
+    "/workspace/coroseg-work/final6/test/pilot1000",
+    "-d",
+    "901",
+    "-c",
+    "3d_fullres",
+    "-f",
+    "0",
+    "-tr",
+    "nnUNetTrainer_1000epochs_NoMirroring",
+    "-p",
+    "nnUNetResEncUNetL40GPlans",
+    "-chk",
+    "checkpoint_final.pth",
+    "-step_size",
+    "0.25",
+    "--disable_tta",
+    "--save_probabilities",
+    "--continue_prediction",
+    "-npp",
+    "4",
+    "-nps",
+    "4"
+   ],
+   "extra_env": {},
+   "seconds": 4142,
+   "finished": "2026-11-06_22:19:32"
+  },
+  "resenc_l": {
+   "member": "resenc_l",
+   "trainer": "nnUNetTrainer_250epochs_NoMirroring",
+   "plans": "nnUNetResEncUNetL40GPlans",
+   "step": 0.25,
+   "tta": false,
+   "checkpoint": "checkpoint_final.pth",
+   "checkpoint_sha256": "913274bac386e3752a0deb129e77c0f24782b0645e9def8c0401fd645de891be",
+   "plans_sha256": "84622caf07eb3b0be5eac65bc753fdb5c9ec5f5b0abe53530cee74c253b283c9",
+   "images": "/workspace/coroseg-work/test_in",
+   "n": 250,
+   "command": [
+    "nnUNetv2_predict",
+    "-i",
+    "/workspace/coroseg-work/test_in",
+    "-o",
+    "/workspace/coroseg-work/final6/test/resenc_l",
+    "-d",
+    "901",
+    "-c",
+    "3d_fullres",
+    "-f",
+    "0",
+    "-tr",
+    "nnUNetTrainer_250epochs_NoMirroring",
+    "-p",
+    "nnUNetResEncUNetL40GPlans",
+    "-chk",
+    "checkpoint_final.pth",
+    "-step_size",
+    "0.25",
+    "--disable_tta",
+    "--save_probabilities",
+    "--continue_prediction",
+    "-npp",
+    "4",
+    "-nps",
+    "4"
+   ],
+   "extra_env": {},
+   "seconds": 4133,
+   "finished": "2026-11-06_23:34:10"
+  },
+  "resenc_l_ft": {
+   "member": "resenc_l_ft",
+   "trainer": "nnUNetTrainer_ft250_NM",
+   "plans": "nnUNetResEncUNetL40GPlans",
+   "step": 0.25,
+   "tta": false,
+   "checkpoint": "checkpoint_final.pth",
+   "checkpoint_sha256": "ec05e7f1933b536b1607cb50fc620c71e21f3354dbd021b617ec2abf378664da",
+   "plans_sha256": "84622caf07eb3b0be5eac65bc753fdb5c9ec5f5b0abe53530cee74c253b283c9",
+   "images": "/workspace/coroseg-work/test_in",
+   "n": 250,
+   "command": [
+    "nnUNetv2_predict",
+    "-i",
+    "/workspace/coroseg-work/test_in",
+    "-o",
+    "/workspace/coroseg-work/final6/test/resenc_l_ft",
+    "-d",
+    "901",
+    "-c",
+    "3d_fullres",
+    "-f",
+    "0",
+    "-tr",
+    "nnUNetTrainer_ft250_NM",
+    "-p",
+    "nnUNetResEncUNetL40GPlans",
+    "-chk",
+    "checkpoint_final.pth",
+    "-step_size",
+    "0.25",
+    "--disable_tta",
+    "--save_probabilities",
+    "--continue_prediction",
+    "-npp",
+    "4",
+    "-nps",
+    "4"
+   ],
+   "extra_env": {},
+   "seconds": 4123,
+   "finished": "2026-11-07_00:50:00"
+  },
+  "unet_ft500": {
+   "member": "unet_ft500",
+   "trainer": "nnUNetTrainer_ft500_NM",
+   "plans": "nnUNetPlans",
+   "step": 0.25,
+   "tta": false,
+   "checkpoint": "checkpoint_final.pth",
+   "checkpoint_sha256": "6d6a3226088d10924960d36baf7283ee2495fce23b570062f8af47e53d1938d9",
+   "plans_sha256": "e331de79b89c0551620d7c8493d68b8f0d2cb26f184404fd6933252f283eacae",
+   "images": "/workspace/coroseg-work/test_in",
+   "n": 250,
+   "command": [
+    "nnUNetv2_predict",
+    "-i",
+    "/workspace/coroseg-work/test_in",
+    "-o",
+    "/workspace/coroseg-work/final6/test/unet_ft500",
+    "-d",
+    "901",
+    "-c",
+    "3d_fullres",
+    "-f",
+    "0",
+    "-tr",
+    "nnUNetTrainer_ft500_NM",
+    "-p",
+    "nnUNetPlans",
+    "-chk",
+    "checkpoint_final.pth",
+    "-step_size",
+    "0.25",
+    "--disable_tta",
+    "--save_probabilities",
+    "--continue_prediction",
+    "-npp",
+    "4",
+    "-nps",
+    "4"
+   ],
+   "extra_env": {},
+   "seconds": 6469,
+   "finished": "2026-11-07_02:44:35"
+  }
+ },
+ "seconds": 21030,
+ "finished": "2026-11-07_03:01:01"
+}
